@@ -1,0 +1,10 @@
+.Profile {
+  max-width: 880px;
+  min-height: 120px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  padding: 0;
+  display: flex;
+}
