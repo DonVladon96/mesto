@@ -4,8 +4,7 @@ background-color: rgba(0, 0, 0, .6);
 opacity: 1;
 transition: visibility .3s, opacity, .3s;
 cursor: pointer;
-visibility: visible;  /*Поменять на видимый/не видимый при нажатии (hidden)*/
-display: flex;
+display: flex; /* Поменять на display: none; */
 position: fixed;
 top: 0;
 bottom: 0;
