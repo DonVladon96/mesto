@@ -9,6 +9,7 @@
   <meta name="Translate" content="Место">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script async src="./scripts/index.js"></script>
   <title>Mesto</title>
 </head>
 
@@ -23,7 +24,7 @@
         <div class="Profile__info">
           <div class="Profile__name-content">
             <h1 class="Profile__name">Жак-Ив Кусто</h1>
-            <button type="button" aria-label="Редактировать профиль" class="Profile__button link"></button>
+            <button type="button" aria-label="Редактировать профиль" class="Profile__edit link"></button>
           </div>
           <p class="Profile__aboute">Исследователь океана</p>
         </div>
@@ -80,7 +81,7 @@
     <!-- Создаю попап для профиля-->
     <section class="popup popup__section">
       <div class="popup__container">
-        <button type="button" class="popup__close-icon link"></button>
+        <button type="button" class="popup__close link"></button>
         <form action="" class="popup__form">
           <h2 class="popup__title"> Редактировать профиль</h2>
           <input type="text" name="user-name" placeholder="Ваше имя" class="popup__input">
