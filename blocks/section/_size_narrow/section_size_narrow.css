@@ -19,7 +19,7 @@ max-width: calc(100%);
 @media screen and (max-width: 700px) {
 .section_size_narrow {
   flex-direction: column;
-  align-items: center
+  align-items: center;
 }
 }
 
