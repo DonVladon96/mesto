@@ -6,3 +6,14 @@ font-weight: 400;
 font-size: 18px;
 line-height: 22px;
 }
+
+
+@media screen and (max-width: 350px) {
+.Profile__aboute {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+}

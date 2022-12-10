@@ -1,6 +1,7 @@
 .Profile__add-button {
-  background-image: url(../../../images/Add-Button.png);
+  background-image: url(../../../images/addButton.svg);
   background-repeat: no-repeat;
+  background-position: center;
   object-fit: cover;
   max-width: 150px;
   min-height: 50px;
@@ -10,4 +11,30 @@
   margin: auto;
   margin-left: 244px;
   background-color: #000
+}
+
+@media screen and (max-width: 890px) {
+  .Profile__add-button {
+margin-left: auto;
+margin-right: 0;
+}
+}
+
+@media screen and (max-width: 700px) {
+.Profile__add-button {
+margin-top: 36px;
+max-width: 500px;
+background-position: center;
+margin-left: auto;
+margin-right: auto;
+width: calc(282px + (550 - 282) * ((100vw - 320px) / (1280 - 320)));
+}
+}
+
+@media screen and (max-width: 700px) {
+.Profile__add-button {
+  margin-top: 8px;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+}
 }

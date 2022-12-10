@@ -12,3 +12,9 @@ font-size: 18px;
 line-height: 22px;
 text-align: center;
 }
+
+/* @media screen and (max-width: 350px) {
+.popup__submit-button {
+max-width: 238px;
+}
+} */

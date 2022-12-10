@@ -2,3 +2,9 @@
   margin: 0 auto;
   max-width: 1280px;
 }
+
+/* @media screen and (max-width: 350px) {
+.popup__section {
+  max-width: 282px;
+}
+} */

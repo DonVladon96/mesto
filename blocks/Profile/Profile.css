@@ -8,3 +8,12 @@
   padding: 0;
   display: flex;
 }
+
+@media screen and (max-width: 400px) {
+.Profile {
+  max-width: 282px;
+  max-height: 286px;
+  margin-top: 23px;
+  margin-bottom: 36px;
+}
+}

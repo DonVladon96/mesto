@@ -1,7 +1,6 @@
 .Profile__Avatar {
 max-width: 120px;
 max-height: 120px;
-width: 100%;
 border-radius: 50%;
 object-fit: cover;
 margin-right: 30px;
@@ -9,3 +8,11 @@ margin-left: 0;
 margin-top: 0;
 margin-bottom: 0;
 }
+
+@media screen and (max-width: 400px) {
+.Profile__Avatar {
+width: 100%;
+margin: 0;
+}
+}
+

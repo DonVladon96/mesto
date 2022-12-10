@@ -8,3 +8,18 @@ margin-right: auto;
 margin-bottom: 0;
 padding: 0;
 }
+
+@media screen and (max-width: 980px) {
+.header {
+  width: calc(100% - 80px);
+}
+}
+
+@media screen and (max-width: 320px) {
+.header {
+  width: 100%;
+  max-width: 320px;
+  margin: 0;
+  margin-top: 28px;
+}
+}
