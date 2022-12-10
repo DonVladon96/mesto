@@ -1,0 +1,27 @@
+.Profile__name {
+font-style: normal;
+font-weight: 500;
+font-size: 42px;
+line-height: 48px;
+margin: 0;
+}
+
+@media screen and (max-width: 890px) {
+.Profile__name {
+font-size: calc(27px + (45 - 27) * ((100vw - 320px) / (1280 - 320)));
+line-height: calc(33px + (48 - 33) * ((100vw - 320px) / (1280 - 320)));
+width: calc(189px + (294 - 189) * ((100vw - 320px) / (1280 - 320)));
+}
+}
+
+@media screen and (max-width: 350px) {
+.Profile__name {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 33px;
+  text-align: center;
+  margin-left: 45px;
+}
+}
+

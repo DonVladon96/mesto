@@ -1,0 +1,19 @@
+.Profile {
+  max-width: 880px;
+  min-height: 120px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  padding: 0;
+  display: flex;
+}
+
+@media screen and (max-width: 400px) {
+.Profile {
+  max-width: 282px;
+  max-height: 286px;
+  margin-top: 23px;
+  margin-bottom: 36px;
+}
+}
