@@ -51,4 +51,4 @@ function handleFormSubmit(evt) {
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
-
+// здесь сделать кнопку лайк
