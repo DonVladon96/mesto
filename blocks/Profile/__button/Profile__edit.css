@@ -1,18 +1,18 @@
-.Profile__edit {
-background-image: url(../../../images/Edit\ Button.svg);
-background-size: 24px 24px;
-background-repeat: no-repeat;
-width: 24px;
-height: 24px;
-background-color: #000;
-border: solid 1px #FFF;
-cursor: pointer;
-margin-top: 15px;
-padding: 0;
+.profile__edit {
+  background-image: url(../../../images/Edit\ Button.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: solid 1px #FFF;
+  cursor: pointer;
+  margin-top: 15px;
+  padding: 0;
 }
 
 @media screen and (max-width: 350px) {
-.Profile__edit {
+.profile__edit {
   width: 18px;
   height: 18px;
   margin: 0;
