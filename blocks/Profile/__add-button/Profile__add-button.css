@@ -11,6 +11,7 @@
   margin: auto;
   margin-left: 244px;
   background-color: transparent;
+  border: 2px solid #FFFFFF;
   border-radius: 2px;
 }
 
@@ -26,16 +27,9 @@
   margin-top: 36px;
   max-width: 500px;
   background-position: center;
-  margin-left: auto;
   margin-right: auto;
   width: calc(282px + (550 - 282) * ((100vw - 320px) / (1280 - 320)));
+  margin-top: 8px;
 }
 }
 
-@media screen and (max-width: 700px) {
-.profile__add-button {
-  margin-top: 8px;
-  border: 2px solid #FFFFFF;
-  border-radius: 2px;
-}
-}
