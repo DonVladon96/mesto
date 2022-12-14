@@ -19,7 +19,7 @@
   transition-timing-function: ease-in;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 352px) {
 .profile__edit {
   width: 18px;
   height: 18px;
