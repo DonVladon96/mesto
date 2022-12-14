@@ -11,6 +11,14 @@
   padding: 0;
 }
 
+.profile__edit:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition-property: opacity;
+  transition-duration: .3s;
+  transition-timing-function: ease-in;
+}
+
 @media screen and (max-width: 350px) {
 .profile__edit {
   width: 18px;

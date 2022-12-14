@@ -10,3 +10,10 @@
   border-style: none;
 }
 
+.element__button-like:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition-property: opacity;
+  transition-duration: .3s;
+  transition-timing-function: ease-in;
+}
