@@ -11,7 +11,6 @@
   max-width: calc(100% - 30px);
 }
 
-
 @media screen and (max-width: 350px) {
 .profile__aboute {
   font-size: 14px;
