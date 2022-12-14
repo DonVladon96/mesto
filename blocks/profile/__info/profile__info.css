@@ -11,10 +11,10 @@
    display: flex;
    flex-direction: column;
   align-items: center;
-  }
-  }
+}
+}
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 352px) {
 .profile__info{
   max-width: 282px;
   text-align: center;
