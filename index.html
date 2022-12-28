@@ -48,6 +48,19 @@
         </form>
       </div>
     </div>
+    <!-- Создаю попап для карточек-->
+    <div class="popup popup_cards">
+      <div class="popup__container">
+        <button type="button" class="popup_cards_close"></button>
+        <form class="popup__form" id="popup-form-card">
+          <h2 class="popup__title">Новое место</h2>
+          <input type="text" name="user-name" placeholder="Название?" class="popup__input" id="card-name">
+          <input type="text" name="user-job" placeholder="Ссылка на картинку" class="popup__input" id="card-link">
+          <button type="submit" class="popup__submit-button" id="submit-button-card">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
   </div>
   <script async src="./scripts/index.js"></script>
 </body>
