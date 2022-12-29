@@ -118,18 +118,25 @@ const cards =  [
 
 const cardContainer = document.querySelector('.elements');
 const createCard = (card) => {
-  return `<article class="element">
+  const string = `<article class="element">
       <img src="${card.link}" alt="Карачаевск" class="element__photo">
        <div class="element__photo-info">
        <h2 class="element__title">${card.name}</h2>
       <button type="button" class="element__button-like"></button>
       </div>
     </article>`
+    const container = document.createElement('div');
+    container.innerHTML = string;
+    const likeButton = container.querySelector('.element__button-like')
+    likeButton.addEventListener('click',() => {
+      likeButton.classList.toggle('element__button-like_active')
+    })
+  return container;
 }
 
 const renderCard = (card) => {
-const test = cardContainer.insertAdjacentHTML('afterbegin', createCard(card))
-console.log(test)
+cardContainer.prepend(createCard(card))
+
 }
 
 
@@ -167,10 +174,11 @@ submitButton.addEventListener('click',(e) => {
 // Делаем лайк кнопки <button type="button" class="element__button-like"></button>
 // .element__button-like_active  поменять на это
 
-const likeButtons = document.querySelectorAll('.element__button-like');
+// const likeButtons = document.querySelectorAll('.element__button-like');
 
-likeButtons.forEach((button) => {
- button.addEventListener('click', () => {
- button.classList.toggle('element__button-like_active')})
-})
+// likeButtons.forEach((button) => {
+//  button.addEventListener('click', () => {
+//  button.classList.toggle('element__button-like_active')})
+// })
+
 
