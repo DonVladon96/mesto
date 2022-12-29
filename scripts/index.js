@@ -6,20 +6,6 @@ const profileEdit = document.querySelector('.profile__edit');
 const popup = document.querySelector('.popup');
 const popupClose = document.querySelector('.popup__close');
 
-//Переменные для карточек
-// const addCards = document.querySelector('.profile__add-button');
-// const popupCards = document.querySelector('.popup_cards');
-// const popupCardsClose = document.querySelector('.popup_cards_close');
-// // const formCard = document.querySelector('#popup-form-card');
-// // const nameCard = formElement.querySelector('#card-name');
-// // const urlCard = formElement.querySelector('#card-url');
-// addCards.addEventListener('click', openCardPopup);
-// // popupCardsClose.addEventListener('click', closeCardPopup);
-
-
-
-
-
 
 const formElement = document.querySelector('#popup-form')
 const nameInput = formElement.querySelector('#input-name')
@@ -61,7 +47,7 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 
 
-// надо сделать, чтобы картинки добавлялись в начало
+// Первый метод. Оставлю здесь на всякий случай.
 // const initialCards = [
 //   {
 //     name: 'Карачаевск',
@@ -100,17 +86,6 @@ formElement.addEventListener('submit', handleFormSubmit);
 //   const cardContainer = document.querySelector('.elements');
 //   cardContainer.insertAdjacentHTML('afterbegin', element)
 // });
-
-
-
-
-
-
-
-
-
-
-
 
 //пробуем метод из вебинара
 
@@ -152,26 +127,24 @@ const createCard = (card) => {
     </article>`
 }
 
-
-
 const renderCard = (card) => {
-  cardContainer.insertAdjacentHTML('afterbegin', createCard(card))
+const test = cardContainer.insertAdjacentHTML('afterbegin', createCard(card))
+console.log(test)
 }
+
+
 
 cards.forEach((card) => {
   renderCard(card);
 })
 
-
-//ВЫВОД: КАК В ВЕБИНАРЕ НЕ ПОЛУЧАЕТСЯ!
+//ВЫВОД: СДЕЛАЛ КАК В ВЕБИНАРЕ.
 
 const openCardButton = document.querySelector('.profile__add-button');
 const popupCards = document.querySelector('.popup_cards');
 const titleInput = popupCards.querySelector('#card-name');
 const linkInput = popupCards.querySelector('#card-link');
 const submitButton = popupCards.querySelector('#submit-button-card');
-
-
 
 
 openCardButton.addEventListener('click', () => {
@@ -191,4 +164,13 @@ submitButton.addEventListener('click',(e) => {
   popupCards.classList.remove('popup_opened');
 })
 
+// Делаем лайк кнопки <button type="button" class="element__button-like"></button>
+// .element__button-like_active  поменять на это
+
+const likeButtons = document.querySelectorAll('.element__button-like');
+
+likeButtons.forEach((button) => {
+ button.addEventListener('click', () => {
+ button.classList.toggle('element__button-like_active')})
+})
 
