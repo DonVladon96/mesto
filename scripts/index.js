@@ -5,8 +5,6 @@
 const profileEdit = document.querySelector('.profile__edit');
 const popup = document.querySelector('.popup');
 const popupClose = document.querySelector('.popup__close');
-
-
 const formElement = document.querySelector('#popup-form')
 const nameInput = formElement.querySelector('#input-name')
 const jobInput = formElement.querySelector('#input-job')
@@ -16,7 +14,6 @@ const profileJob = profileInfo.querySelector('.profile__aboute')
 
 profileEdit.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
-
 
 function openPopup(event) {
   popup.classList.add('popup_opened')
@@ -40,12 +37,6 @@ function handleFormSubmit(evt) {
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
-// здесь сделать кнопку лайк
-
-
-
-
-
 
 // Первый метод. Оставлю здесь на всякий случай.
 // const initialCards = [
@@ -119,6 +110,7 @@ const cards =  [
 const cardContainer = document.querySelector('.elements');
 const createCard = (card) => {
   const string = `<article class="element">
+      <div class trash></div>
       <img src="${card.link}" alt="Карачаевск" class="element__photo">
        <div class="element__photo-info">
        <h2 class="element__title">${card.name}</h2>
@@ -136,10 +128,7 @@ const createCard = (card) => {
 
 const renderCard = (card) => {
 cardContainer.prepend(createCard(card))
-
 }
-
-
 
 cards.forEach((card) => {
   renderCard(card);
@@ -147,16 +136,25 @@ cards.forEach((card) => {
 
 //ВЫВОД: СДЕЛАЛ КАК В ВЕБИНАРЕ.
 
+// Делаем лайк кнопки <button type="button" class="element__button-like"></button>
+// .element__button-like_active
 const openCardButton = document.querySelector('.profile__add-button');
 const popupCards = document.querySelector('.popup_cards');
 const titleInput = popupCards.querySelector('#card-name');
 const linkInput = popupCards.querySelector('#card-link');
 const submitButton = popupCards.querySelector('#submit-button-card');
 
-
+//кнопка открытия редиктора карточек
 openCardButton.addEventListener('click', () => {
   popupCards.classList.add('popup_opened')
 });
+
+// Кнопка закрытия редактора карточек
+const cardClose = document.querySelector('.popup_cards_close')
+cardClose.addEventListener('click', closeCard);
+function closeCard() {
+ popupCards.classList.remove('popup_opened');
+}
 
 submitButton.addEventListener('click',(e) => {
   e.preventDefault();
@@ -171,14 +169,6 @@ submitButton.addEventListener('click',(e) => {
   popupCards.classList.remove('popup_opened');
 })
 
-// Делаем лайк кнопки <button type="button" class="element__button-like"></button>
-// .element__button-like_active  поменять на это
 
-// const likeButtons = document.querySelectorAll('.element__button-like');
-
-// likeButtons.forEach((button) => {
-//  button.addEventListener('click', () => {
-//  button.classList.toggle('element__button-like_active')})
-// })
 
 
