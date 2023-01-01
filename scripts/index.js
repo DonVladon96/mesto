@@ -102,7 +102,7 @@ const cards = [
     link: '../images/pizza.png'
   },
   {
-    name: 'Фотограф',
+    name: 'Челябинская область',
     // link: './images/photograph.jpg'
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   }
