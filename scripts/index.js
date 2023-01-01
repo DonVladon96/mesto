@@ -80,54 +80,80 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 //пробуем метод из вебинара
 
-const cards =  [
-    {
-      name: 'Карачаевск',
-      link: '../images/photo1.png'
-    },
-    {
-      name: 'Глинтвейн',
-      link: '../images/orange-juice.png'
-    },
-    {
-      name: 'Пианист',
-      link: '../images/piano.png'
-    },
-    {
-      name: 'Космонавт',
-      link: '../images/CCCP.png'
-    },
-    {
-      name: 'Вкуснотища!',
-      link: '../images/pizza.png'
-    },
-    {
-      name: 'Фотограф',
-      link: './images/photograph.jpg'
-    }
-  ];
+const cards = [
+  {
+    name: 'Coffee',
+    link: '../images/coffe.jpg'
+  },
+  {
+    name: 'Глинтвейн',
+    link: '../images/orange-juice.png'
+  },
+  {
+    name: 'Пианист',
+    link: '../images/piano.png'
+  },
+  {
+    name: 'Космонавт',
+    link: '../images/CCCP.png'
+  },
+  {
+    name: 'Вкуснотища!',
+    link: '../images/pizza.png'
+  },
+  {
+    name: 'Фотограф',
+    // link: './images/photograph.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  }
+];
+
 
 const cardContainer = document.querySelector('.elements');
 const createCard = (card) => {
   const string = `<article class="element">
-      <div class trash></div>
+     <button type="buttonTrash" class="element__button-trash"></button>
       <img src="${card.link}" alt="Карачаевск" class="element__photo">
        <div class="element__photo-info">
        <h2 class="element__title">${card.name}</h2>
       <button type="button" class="element__button-like"></button>
       </div>
     </article>`
-    const container = document.createElement('div');
-    container.innerHTML = string;
-    const likeButton = container.querySelector('.element__button-like')
-    likeButton.addEventListener('click',() => {
-      likeButton.classList.toggle('element__button-like_active')
-    })
+  const container = document.createElement('div');
+  container.innerHTML = string;
+  const likeButton = container.querySelector('.element__button-like')
+  const buttonTrash = container.querySelector('.element__button-trash');
+  const openCard = container.querySelector('.element__photo');
+  openCard.addEventListener('click', () => {
+    const popupImageOpen = document.querySelector('.popup_image-open')
+    const popupImage = popupImageOpen.querySelector('.popup__image')
+    const popupCaption = popupImageOpen.querySelector('.popup__caption')
+    popupImage.setAttribute('src', card.link)
+    popupCaption.textContent = card.name;
+    popupImageOpen.classList.add('popup_opened')
+  });
+
+  buttonTrash.addEventListener('click', () => {
+    container.remove();
+  })
+  likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('element__button-like_active')
+  })
+
   return container;
 }
 
+// Кнопка закрытия картинки
+const popupCloseImg = document.querySelector('.popup__close-image');
+popupCloseImg.addEventListener('click', () => {
+
+  const popupImageOpen = document.querySelector('.popup_image-open')
+  popupImageOpen.classList.remove('popup_opened');
+})
+
+
 const renderCard = (card) => {
-cardContainer.prepend(createCard(card))
+  cardContainer.prepend(createCard(card))
 }
 
 cards.forEach((card) => {
@@ -153,21 +179,23 @@ openCardButton.addEventListener('click', () => {
 const cardClose = document.querySelector('.popup_cards_close')
 cardClose.addEventListener('click', closeCard);
 function closeCard() {
- popupCards.classList.remove('popup_opened');
+  popupCards.classList.remove('popup_opened');
 }
 
-submitButton.addEventListener('click',(e) => {
+submitButton.addEventListener('click', (e) => {
   e.preventDefault();
   const newCard = {
     name: titleInput.value,
     link: linkInput.value
   }
 
-  if(!newCard.name || !newCard.link) return;
+  if (!newCard.name || !newCard.link) return;
 
   renderCard(newCard)
   popupCards.classList.remove('popup_opened');
 })
+
+
 
 
 
