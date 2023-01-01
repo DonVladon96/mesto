@@ -108,7 +108,6 @@ const cards = [
   }
 ];
 
-
 const cardContainer = document.querySelector('.elements');
 const createCard = (card) => {
   const string = `<article class="element">
@@ -151,7 +150,6 @@ popupCloseImg.addEventListener('click', () => {
   popupImageOpen.classList.remove('popup_opened');
 })
 
-
 const renderCard = (card) => {
   cardContainer.prepend(createCard(card))
 }
@@ -161,7 +159,6 @@ cards.forEach((card) => {
 })
 
 //ВЫВОД: СДЕЛАЛ КАК В ВЕБИНАРЕ.
-
 // Делаем лайк кнопки <button type="button" class="element__button-like"></button>
 // .element__button-like_active
 const openCardButton = document.querySelector('.profile__add-button');
