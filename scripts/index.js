@@ -172,7 +172,7 @@ openCardButton.addEventListener('click', () => {
 });
 
 // Кнопка закрытия редактора карточек
-const cardClose = document.querySelector('.popup_cards_close')
+const cardClose = document.querySelector('.popup_cards-close')
 cardClose.addEventListener('click', closeCard);
 function closeCard() {
   popupCards.classList.remove('popup_opened');

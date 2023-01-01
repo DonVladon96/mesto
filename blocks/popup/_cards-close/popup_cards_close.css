@@ -1,4 +1,4 @@
-.popup_cards_close {
+.popup_cards-close {
   background-image: url(../../../images/Close.svg);
   background-size: cover;
   width: 32px;
@@ -8,7 +8,7 @@
   border: none;
 }
 
-.popup_cards_close:hover {
+.popup_cards-close:hover {
   cursor: pointer;
   opacity: 0.5;
   transition-property: opacity;
@@ -17,14 +17,14 @@
 }
 
  @media screen and (max-width: 480px) {
-.popup_cards_close {
+.popup_cards-close {
   width: 27px;
   height: 27px;
 }
 }
 
 @media screen and (max-width: 413px) {
-.popup_cards_close {
+.popup_cards-close {
   width: 20px;
   height: 20px;
   margin: 0;
