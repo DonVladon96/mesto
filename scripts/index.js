@@ -161,7 +161,7 @@ cards.forEach((card) => {
 // Делаем лайк кнопки <button type="button" class="element__button-like"></button>
 // .element__button-like_active
 const openCardButton = document.querySelector('.profile__add-button');
-const popupCards = document.querySelector('.popup__cards');
+const popupCards = document.querySelector('.popup-cards');
 const titleInput = popupCards.querySelector('#card-name');
 const linkInput = popupCards.querySelector('#card-link');
 const submitButton = popupCards.querySelector('#submit-button-card');
@@ -191,8 +191,6 @@ submitButton.addEventListener('click', (e) => {
   popupCards.classList.remove('popup_opened');
 })
 
-popup_cards
-popup_cards-close
 
 
 
