@@ -1,8 +1,10 @@
 .popup {
   background-color: rgba(0, 0, 0, .5);
   visibility: hidden;
+  opacity: 0;
+  transition: opacity .6s ease-in, visibility .6s ease-in;
   cursor: pointer;
-  display: none; /* Поменять в popupOpened на display: flex; */
+  display: flex; /* Поменять в popupOpened на display: flex; */
   position: fixed;
   top: 0;
   left: 0;
@@ -13,3 +15,5 @@
   justify-content: center;
   align-items: center;
 }
+
+
