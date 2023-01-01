@@ -83,27 +83,26 @@ formElement.addEventListener('submit', handleFormSubmit);
 const cards = [
   {
     name: 'Coffee',
-    link: '../images/coffe.jpg'
+    link: './images/coffe.jpg'
   },
   {
     name: 'Глинтвейн',
-    link: '../images/orange-juice.png'
+    link: './images/orange-juice.png'
   },
   {
     name: 'Пианист',
-    link: '../images/piano.png'
+    link: './images/piano.png'
   },
   {
     name: 'Космонавт',
-    link: '../images/CCCP.png'
+    link: './images/CCCP.png'
   },
   {
     name: 'Вкуснотища!',
-    link: '../images/pizza.png'
+    link: './images/pizza.png'
   },
   {
     name: 'Челябинская область',
-    // link: './images/photograph.jpg'
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   }
 ];
