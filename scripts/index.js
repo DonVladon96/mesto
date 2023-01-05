@@ -3,8 +3,8 @@
 //.popup__close
 //Переменные для попапа
 const profileEdit = document.querySelector('.profile__edit');
-const popup = document.querySelector('.popup');
-const popupClose = document.querySelector('.popup__close');
+const popupEditProfile = document.querySelector('.popup');
+const popupCloseProfile = document.querySelector('.popup__close');
 const formElement = document.querySelector('#popup-form')
 const nameInput = formElement.querySelector('#input-name')
 const jobInput = formElement.querySelector('#input-job')
@@ -12,73 +12,39 @@ const profileInfo = document.querySelector('.profile__info')
 const profileName = profileInfo.querySelector('.profile__name')
 const profileJob = profileInfo.querySelector('.profile__aboute')
 
-profileEdit.addEventListener('click', openPopup);
-popupClose.addEventListener('click', closePopup);
-
-function openPopup(event) {
+//Универсальные функции открытия и закрытия попапов
+function openPopup(popup) {
   popup.classList.add('popup_opened')
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+profileEdit.addEventListener('click', openProfilePopup);
+popupCloseProfile.addEventListener('click', () => {
+  closePopup(popupEditProfile)
+});
+
+function openProfilePopup(event) {
+  openPopup(popupEditProfile)
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
 
-function closePopup() {
-  popup.classList.remove('popup_opened');
-}
 
 // делаем сабмит
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  let nameValue = nameInput.value
-  let jobValue = jobInput.value
+  const nameValue = nameInput.value
+  const jobValue = jobInput.value
   profileName.textContent = nameValue
   profileJob.textContent = jobValue
-  closePopup();
+  closePopup(popupEditProfile);
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
-
-// Первый метод. Оставлю здесь на всякий случай.
-// const initialCards = [
-//   {
-//     name: 'Карачаевск',
-//     link: '../images/photo1.png'
-//   },
-//   {
-//     name: 'Глинтвейн',
-//     link: '../images/orange-juice.png'
-//   },
-//   {
-//     name: 'Пианист',
-//     link: '../images/piano.png'
-//   },
-//   {
-//     name: 'Космонавт',
-//     link: '../images/CCCP.png'
-//   },
-//   {
-//     name: 'Вкуснотища!',
-//     link: '../images/pizza.png'
-//   },
-//   {
-//     name: 'Фотограф',
-//     link: './images/photograph.jpg'
-//   }
-// ];
-
-// initialCards.forEach((card) => {
-//   const element = `<article class="element">
-//     <img src="${card.link}" alt="Карачаевск" class="element__photo">
-//     <div class="element__photo-info">
-//     <h2 class="element__title">${card.name}</h2>
-//     <button type="button" class="element__button-like"></button>
-//     </div>
-//   </article>`
-//   const cardContainer = document.querySelector('.elements');
-//   cardContainer.insertAdjacentHTML('afterbegin', element)
-// });
-
-//пробуем метод из вебинара
 
 const cards = [
   {
@@ -106,29 +72,28 @@ const cards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   }
 ];
+const template = document.querySelector('#card-item-template');
 
 const cardContainer = document.querySelector('.elements');
 const createCard = (card) => {
-  const string = `<article class="element">
-     <button type="buttonTrash" class="element__button-trash"></button>
-      <img src="${card.link}" alt="Карачаевск" class="element__photo">
-       <div class="element__photo-info">
-       <h2 class="element__title">${card.name}</h2>
-      <button type="button" class="element__button-like"></button>
-      </div>
-    </article>`
-  const container = document.createElement('div');
-  container.innerHTML = string;
-  const likeButton = container.querySelector('.element__button-like')
+  const container = template.content.querySelector('.element').cloneNode(true);
+  const likeButton = container.querySelector('.element__button-like');
   const buttonTrash = container.querySelector('.element__button-trash');
   const openCard = container.querySelector('.element__photo');
+  openCard.setAttribute('src', card.link)
+
+  const cardTitle = container.querySelector('.element__title');
+  cardTitle.textContent = card.name;
+
+
   openCard.addEventListener('click', () => {
     const popupImageOpen = document.querySelector('.popup_image-open')
     const popupImage = popupImageOpen.querySelector('.popup__image')
     const popupCaption = popupImageOpen.querySelector('.popup__caption')
     popupImage.setAttribute('src', card.link)
     popupCaption.textContent = card.name;
-    popupImageOpen.classList.add('popup_opened')
+    // popupImageOpen.classList.add('popup_opened')
+    openPopup(popupImageOpen);
   });
 
   buttonTrash.addEventListener('click', () => {
@@ -146,7 +111,7 @@ const popupCloseImg = document.querySelector('.popup__close-image');
 popupCloseImg.addEventListener('click', () => {
 
   const popupImageOpen = document.querySelector('.popup_image-open')
-  popupImageOpen.classList.remove('popup_opened');
+  closePopup(popupImageOpen)
 })
 
 const renderCard = (card) => {
@@ -168,16 +133,18 @@ const submitButton = popupCards.querySelector('#submit-button-card');
 
 //кнопка открытия редиктора карточек
 openCardButton.addEventListener('click', () => {
-  popupCards.classList.add('popup_opened')
+  // popupCards.classList.add('popup_opened')
+  openPopup(popupCards)
 });
 
 // Кнопка закрытия редактора карточек
 const cardClose = document.querySelector('.popup__cards-close')
-cardClose.addEventListener('click', closeCard);
-function closeCard() {
-  popupCards.classList.remove('popup_opened');
-}
+cardClose.addEventListener('click', () => {
+  closePopup(popupCards)
+})
 
+
+//Обрабатываем форму
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
   const newCard = {
@@ -189,6 +156,8 @@ submitButton.addEventListener('click', (e) => {
 
   renderCard(newCard)
   popupCards.classList.remove('popup_opened');
+  titleInput.value = ''
+  linkInput.value = ''
 })
 
 
