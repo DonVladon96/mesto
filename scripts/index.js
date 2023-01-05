@@ -83,11 +83,11 @@ const createCard = (card) => {
   return container;
 }
 
+
 // Кнопка закрытия картинки
+const popupImageOpen = document.querySelector('.popup_image-open')
 const popupCloseImg = document.querySelector('.popup__close-image');
 popupCloseImg.addEventListener('click', () => {
-
-  const popupImageOpen = document.querySelector('.popup_image-open')
   closePopup(popupImageOpen)
 })
 
@@ -108,7 +108,7 @@ const titleInput = popupCards.querySelector('#card-name');
 const linkInput = popupCards.querySelector('#card-link');
 const submitButton = popupCards.querySelector('#submit-button-card');
 
-//кнопка открытия редиктора карточек
+//кнопка открытия редактора карточек
 openCardButton.addEventListener('click', () => {
   // popupCards.classList.add('popup_opened')
   openPopup(popupCards)
