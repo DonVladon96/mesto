@@ -2,8 +2,10 @@
 //.popup
 //.popup__close
 //Переменные для попапа
+import { cards } from "./constants.js";
+
 const profileEdit = document.querySelector('.profile__edit');
-const popupEditProfile = document.querySelector('.popup');
+const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupCloseProfile = document.querySelector('.popup__close');
 const formElement = document.querySelector('#popup-form')
 const nameInput = formElement.querySelector('#input-name')
@@ -46,32 +48,7 @@ function handleFormSubmit(evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
-const cards = [
-  {
-    name: 'Coffee',
-    link: './images/coffe.jpg'
-  },
-  {
-    name: 'Глинтвейн',
-    link: './images/orange-juice.png'
-  },
-  {
-    name: 'Пианист',
-    link: './images/piano.png'
-  },
-  {
-    name: 'Космонавт',
-    link: './images/CCCP.png'
-  },
-  {
-    name: 'Вкуснотища!',
-    link: './images/pizza.png'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  }
-];
+
 const template = document.querySelector('#card-item-template');
 
 const cardContainer = document.querySelector('.elements');
@@ -85,11 +62,11 @@ const createCard = (card) => {
   const cardTitle = container.querySelector('.element__title');
   cardTitle.textContent = card.name;
 
-
+  const popupImageOpen = document.querySelector('.popup_image-open')
+  const popupImage = popupImageOpen.querySelector('.popup__image')
+  const popupCaption = popupImageOpen.querySelector('.popup__caption')
   openCard.addEventListener('click', () => {
-    const popupImageOpen = document.querySelector('.popup_image-open')
-    const popupImage = popupImageOpen.querySelector('.popup__image')
-    const popupCaption = popupImageOpen.querySelector('.popup__caption')
+
     popupImage.setAttribute('src', card.link)
     popupCaption.textContent = card.name;
     // popupImageOpen.classList.add('popup_opened')
