@@ -8,6 +8,7 @@ const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const buttonClosePopupEditProfile = document.querySelector('.popup__close');
 const popupFormEdit = document.querySelector('#popup-form')
+const popupFormAdd = document.querySelector('#popup-form-card');
 const nameInput = popupFormEdit.querySelector('#input-name')
 const jobInput = popupFormEdit.querySelector('#input-job')
 const profileInfo = document.querySelector('.profile__info')
@@ -33,20 +34,6 @@ function openProfilePopup(event) {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
-
-// делаем сабмит
-
-function submitEditProfileForm(evt) {
-  evt.preventDefault();
-  const nameValue = nameInput.value
-  const jobValue = jobInput.value
-  profileName.textContent = nameValue
-  profileJob.textContent = jobValue
-  closePopup(popupEditProfile);
-}
-
-popupFormEdit.addEventListener('submit', submitEditProfileForm);
-
 
 const template = document.querySelector('#card-item-template');
 const cardContainer = document.querySelector('.elements');
@@ -121,8 +108,9 @@ buttonClosePopupAddCard.addEventListener('click', () => {
 })
 
 
-//Обрабатываем форму
-submitButton.addEventListener('click', (e) => {
+//Обрабатываем форму. первый метод
+
+popupFormAdd.addEventListener('submit', (e) => {
   e.preventDefault();
   const newCard = {
     name: titleInput.value,
@@ -132,11 +120,22 @@ submitButton.addEventListener('click', (e) => {
   if (!newCard.name || !newCard.link) return;
 
   renderCard(newCard)
-  popupCards.classList.remove('popup_opened');
-  titleInput.value = ''
-  linkInput.value = ''
+  // popupCards.classList.remove('popup_opened');
+  closePopup(popupCards);
+  e.target.reset();
 })
 
+// делаем сабмит. второй метод
 
+function submitEditProfileForm(evt) {
+  evt.preventDefault();
+  const nameValue = nameInput.value
+  const jobValue = jobInput.value
+  profileName.textContent = nameValue
+  profileJob.textContent = jobValue
+  closePopup(popupEditProfile);
+}
+
+popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
 
