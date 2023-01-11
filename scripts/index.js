@@ -138,4 +138,18 @@ function submitEditProfileForm(evt) {
 
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
+//test trening
 
+
+
+const enableValidation = () => {
+const formList = Array.from(document.querySelectorAll('.form'));
+formList.forEach((formElement) => {
+formElement.addEventListener('submit', (evt) => {
+evt.preventDefault();
+});
+setEventListeners(formElement);
+});
+};
+
+enableValidation();
