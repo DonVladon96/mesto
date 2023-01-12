@@ -17,7 +17,8 @@ const profileJob = profileInfo.querySelector('.profile__aboute')
 //Универсальные функции открытия и закрытия попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened')
-}
+  document.addEventListener('keydown', closePopupEsc)
+};
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -92,7 +93,7 @@ const linkInput = popupCards.querySelector('#card-link');
 
 //кнопка открытия редактора карточек
 buttonOpenPopupAddCard.addEventListener('click', () => {
-  // popupCards.classList.add('popup_opened')
+
   openPopup(popupCards)
 });
 
@@ -144,4 +145,11 @@ popups.forEach((popup) => {
   })
 });
 
+//закрытие по Esc
+function closePopupEsc(event) {
+  const popupHasOpened = document.querySelector('.popup_opened');
 
+  if (event.key === "Escape") {
+    closePopup(popupHasOpened)
+  };
+};
