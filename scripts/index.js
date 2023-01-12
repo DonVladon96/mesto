@@ -1,9 +1,8 @@
-//Переменные для попапа
-import { cards, validationConfig  } from "./constants.js";
-import {enableValidation} from './validate.js';
+// РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
+import { cards, validationConfig } from "./constants.js";
+import { enableValidation } from './validate.js';
 
-
-const popup = document.querySelector('.popup')
+const popups = document.querySelectorAll('.popup')
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const buttonClosePopupEditProfile = document.querySelector('.popup__close');
@@ -52,7 +51,6 @@ const createCard = (card) => {
   const cardTitle = container.querySelector('.element__title');
   cardTitle.textContent = card.name;
 
-
   cardImage.addEventListener('click', () => {
 
     popupImage.setAttribute('src', card.link)
@@ -86,9 +84,7 @@ cards.forEach((card) => {
   renderCard(card);
 })
 
-//ВЫВОД: СДЕЛАЛ КАК В ВЕБИНАРЕ.
-// Делаем лайк кнопки <button type="button" class="element__button-like"></button>
-// .element__button-like_active
+// ПИШЕМ КАК В ВЕБИНАРЕ.
 const buttonOpenPopupAddCard = document.querySelector('.profile__add-button');
 const popupCards = document.querySelector('.popup-cards');
 const titleInput = popupCards.querySelector('#card-name');
@@ -136,13 +132,16 @@ function submitEditProfileForm(evt) {
 
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
-
+//вызвали функцию валидации
 enableValidation(validationConfig);
 
-popup.addEventListener('click', (e)=> {
-console.log(e)
-})
-
-
+//скрытие полей по клику на оверлей
+popups.forEach((popup) => {
+  popup.addEventListener('click', (e) => {
+    if (e.target.id === 'popup-profile' || e.target.id === 'popup-cards' || e.target.id === 'popup-image') {
+      closePopup(popup)
+    }
+  })
+});
 
 

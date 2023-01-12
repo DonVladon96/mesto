@@ -53,7 +53,7 @@
       </div>
     </div>
     <!-- Создаю попап для карточек-->
-    <div class="popup popup_edit-profile popup-cards">
+    <div class="popup popup_edit-profile popup-cards" id="popup-cards">
       <div class="popup__container">
         <button type="button" class="popup__cards-close"></button>
         <form class="popup__form" id="popup-form-card" novalidate>
@@ -62,13 +62,13 @@
           <span class="card-name-error popup__input-error">вы пропустили поле.</span>
           <input type="url" name="link-error" placeholder="Ссылка на картинку" class="popup__input" id="card-link" required>
           <span class="card-link-error popup__input-error">вы пропустили поле.</span>
-          <button type="submit" class="popup__submit-button popup__submit-button_valid" id="submit-button-card">Сохранить</button>
+          <button type="submit" class="popup__submit-button popup__submit-button_valid" id="submit-button-card">Создать</button>
         </form>
         <!-- class="popup__submit-button popup__" -->
       </div>
     </div>
     <!-- Создаю попап для открытия картинки-->
-    <div class="popup popup_image-open">
+    <div class="popup popup_image-open" id="popup-image">
       <div class="popup__container popup__container_image">
         <button type="button" class="popup__close popup__close-image"></button>
         <div class="popup__wrapper">
