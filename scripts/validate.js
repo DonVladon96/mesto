@@ -1,15 +1,17 @@
-
 function showInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
+  const formButton = formElement.querySelector(config.submitButtonSelector);
+  formButton.classList.add(config.inactiveButtonClass);
   errorElement.classList.add(config.errorClass);
   errorElement.textContent = inputElement.validationMessage;
   inputElement.classList.add(config.inputErrorClass);
-
 }
 
 function hideInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const formButton = formElement.querySelector(config.submitButtonSelector);
+  formButton.classList.remove(config.inactiveButtonClass);
+
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = '';
   inputElement.classList.remove(config.inputErrorClass);
