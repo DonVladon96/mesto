@@ -1,8 +1,8 @@
-//.Profile__edit
-//.popup
-//.popup__close
 //Переменные для попапа
-import { cards } from "./constants.js";
+import { cards, validationConfig  } from "./constants.js";
+import {enableValidation} from './validate.js';
+
+
 
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -93,7 +93,6 @@ const buttonOpenPopupAddCard = document.querySelector('.profile__add-button');
 const popupCards = document.querySelector('.popup-cards');
 const titleInput = popupCards.querySelector('#card-name');
 const linkInput = popupCards.querySelector('#card-link');
-const submitButton = popupCards.querySelector('#submit-button-card');
 
 //кнопка открытия редактора карточек
 buttonOpenPopupAddCard.addEventListener('click', () => {
@@ -120,7 +119,6 @@ popupFormAdd.addEventListener('submit', (e) => {
   if (!newCard.name || !newCard.link) return;
 
   renderCard(newCard)
-  // popupCards.classList.remove('popup_opened');
   closePopup(popupCards);
   e.target.reset();
 })
@@ -138,18 +136,32 @@ function submitEditProfileForm(evt) {
 
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
-//test trening
+
+
+//ПР6 валидиация
+//делаю кака в вебинаре
+
+// вместо form у меня - const popupFormEdit = document.querySelector('#popup-form')
+// const form = document.querySelector('popup__form');
+
+
+// вместо userNameInput у меня - const nameInput = popupFormEdit.querySelector('#input-name')
+// const userNameInput = document.querySelector('#input-name');
+
+//вместо userJobInput у меня -  const jobInput = popupFormEdit.querySelector('#input-job')
+// const userJobInput = document.querySelector('#input-job');
+
+
+//вместо cardName у меня - const titleInput = popupCards.querySelector('#card-name');
+// const cardName = document.querySelector('#card-name');
+
+//вместо cardLink у меня - const linkInput = popupCards.querySelector('#card-link');
+// const cardLink = document.querySelector('#card-link');
+
+enableValidation(validationConfig);
 
 
 
-const enableValidation = () => {
-const formList = Array.from(document.querySelectorAll('.form'));
-formList.forEach((formElement) => {
-formElement.addEventListener('submit', (evt) => {
-evt.preventDefault();
-});
-setEventListeners(formElement);
-});
-};
 
-enableValidation();
+
+

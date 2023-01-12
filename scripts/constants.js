@@ -25,3 +25,12 @@ export const cards = [
   }
 ];
 
+export const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  activeButtonClass: 'popup__submit-button_valid',
+  inactiveButtonClass: 'popup__submit-button_invalid',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_visible'
+};
