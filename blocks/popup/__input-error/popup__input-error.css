@@ -4,12 +4,9 @@
   font-size: 12px;
   line-height: 15px;
   color: #FF0000;
-  max-width: 164px;
   min-height: 30px;
-  padding: 5px 0 0;
   margin: 0;
   box-sizing: border-box;
   display: block;
   visibility: hidden;
 }
-

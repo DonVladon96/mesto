@@ -21,7 +21,7 @@ export const cards = [
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: './images/photograph.jpg'
   }
 ];
 

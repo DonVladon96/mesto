@@ -1,11 +1,13 @@
 .popup__form {
+  box-sizing: border-box;
   max-width: 430px;
+  max-height: 330px;
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 37px;
   padding-left: 36px;
   padding-top: 34px;
   padding-right: 36px;

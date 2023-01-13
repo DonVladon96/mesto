@@ -17,12 +17,34 @@ const profileJob = profileInfo.querySelector('.profile__aboute')
 //Универсальные функции открытия и закрытия попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened')
-  document.addEventListener('keydown', closePopupEsc)
+  document.addEventListener('keydown', closePopupEsc);
+  popup.addEventListener('click', closePopupOverlay);
 };
+
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
+  popup.removeEventListener('click', closePopupOverlay);
 }
+
+//скрытие полей по клику на оверлей
+const closePopupOverlay = (event) => {
+  if (event.target !== event.currentTarget) {
+    return;
+  }
+  closePopup(event.target);
+}
+
+//закрытие попапа по клавише Esc
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    const popupHasOpened = document.querySelector('.popup_opened');
+    closePopup(popupHasOpened)
+  };
+};
+
+
 
 buttonOpenPopupEditProfile.addEventListener('click', openProfilePopup);
 buttonClosePopupEditProfile.addEventListener('click', () => {
@@ -136,20 +158,6 @@ popupFormEdit.addEventListener('submit', submitEditProfileForm);
 //вызвали функцию валидации
 enableValidation(validationConfig);
 
-//скрытие полей по клику на оверлей
-popups.forEach((popup) => {
-  popup.addEventListener('click', (e) => {
-    if (e.target.id === 'popup-profile' || e.target.id === 'popup-cards' || e.target.id === 'popup-image') {
-      closePopup(popup)
-    }
-  })
-});
 
-//закрытие по Esc
-function closePopupEsc(event) {
-  const popupHasOpened = document.querySelector('.popup_opened');
 
-  if (event.key === "Escape") {
-    closePopup(popupHasOpened)
-  };
-};
+
