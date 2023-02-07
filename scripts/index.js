@@ -2,7 +2,6 @@
 import { cards, validationConfig } from "./constants.js";
 import { enableValidation } from './validate.js';
 
-const popups = document.querySelectorAll('.popup')
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const buttonClosePopupEditProfile = document.querySelector('.popup__close');
