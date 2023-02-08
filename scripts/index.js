@@ -1,6 +1,9 @@
 // РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
 import { cards, validationConfig } from "./constants.js";
 import { enableValidation } from './validate.js';
+// import { Card }  from './Card.js'
+
+
 
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
