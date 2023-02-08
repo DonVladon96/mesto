@@ -1,7 +1,7 @@
 // РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
 import { cards, validationConfig } from "./constants.js";
 import { enableValidation } from './validate.js';
-// import { Card }  from './Card.js'
+import  Card from './Card.js'
 
 
 
@@ -62,38 +62,13 @@ function openProfilePopup(event) {
 const template = document.querySelector('#card-item-template');
 const cardContainer = document.querySelector('.elements');
 const popupImageOpen = document.querySelector('.popup_image-open')
-const popupImage = popupImageOpen.querySelector('.popup__image')
-const popupCaption = popupImageOpen.querySelector('.popup__caption')
 
-const createCard = (card) => {
-  const container = template.content.querySelector('.element').cloneNode(true);
-  const likeButton = container.querySelector('.element__button-like');
-  const buttonTrash = container.querySelector('.element__button-trash');
 
-  const cardImage = container.querySelector('.element__photo');
-  cardImage.setAttribute('src', card.link)
-  cardImage.setAttribute('alt', card.name)
-  const cardTitle = container.querySelector('.element__title');
-  cardTitle.textContent = card.name;
-
-  cardImage.addEventListener('click', () => {
-
-    popupImage.setAttribute('src', card.link)
-    popupImage.setAttribute('alt', card.name)
-    popupCaption.textContent = card.name;
-
-    openPopup(popupImageOpen);
-  });
-
-  buttonTrash.addEventListener('click', () => {
-    container.remove();
-  })
-  likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('element__button-like_active')
-  })
-
-  return container;
+const renderCard = (cardData) => {
+  const card = new Card(cardData, template, openPopup);
+  cardContainer.prepend(card.getCard());
 }
+
 
 // Кнопка закрытия картинки
 const buttonClosePopupImage = document.querySelector('.popup__close-image');
@@ -101,9 +76,6 @@ buttonClosePopupImage.addEventListener('click', () => {
   closePopup(popupImageOpen)
 })
 
-const renderCard = (card) => {
-  cardContainer.prepend(createCard(card))
-}
 
 cards.forEach((card) => {
   renderCard(card);
