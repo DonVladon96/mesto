@@ -1,7 +1,6 @@
 // РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
 import { cards, validationConfig } from "./constants.js";
-// import { enableValidation } from './validate.js';
-import  Card from './Card.js'
+import Card from './Card.js'
 import FormValidator from "./FormValidator.js";
 
 
@@ -16,6 +15,7 @@ const jobInput = popupFormEdit.querySelector('#input-job')
 const profileInfo = document.querySelector('.profile__info')
 const profileName = profileInfo.querySelector('.profile__name')
 const profileJob = profileInfo.querySelector('.profile__aboute')
+
 
 //Универсальные функции открытия и закрытия попапов
 function openPopup(popup) {
@@ -130,15 +130,12 @@ popupFormEdit.addEventListener('submit', submitEditProfileForm);
 // enableValidation(validationConfig);
 
 // вызвали функцию валидации с ООП
-// FormValidator.enableValidation();
-
-
 
 function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((formElement) => {
-    const formInfoValidator = new FormValidator (config, formElement);
+    const formInfoValidator = new FormValidator(config, formElement);
     formInfoValidator.enableValidation();
   })
 }

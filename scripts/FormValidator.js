@@ -6,14 +6,6 @@ class FormValidator {
     this._formButton = this._formElement.querySelector(this._config.submitButtonSelector);
   }
 
-  // _resetForm() {
-  //   this._formElement.addEventListener('reset', () => {
-  //     setTimeout(() => {
-  //       toggleButtonState();
-  //     }, 0)
-  //   })
-  // };
-
   _showInputError(inputElement) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
