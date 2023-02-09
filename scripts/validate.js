@@ -47,7 +47,7 @@ function setEventListeners(formElement, config) {
   toggleButtonState(inputList, formButton, config)
 
 
-  //функция для деактивации кнопки методом reset
+  //функция для деактивации кнопки методом reset (ООП+)
   formElement.addEventListener('reset', () => {
     setTimeout(() => {
       toggleButtonState(inputList, formButton, config);

@@ -1,7 +1,8 @@
 // РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
 import { cards, validationConfig } from "./constants.js";
-import { enableValidation } from './validate.js';
+// import { enableValidation } from './validate.js';
 import  Card from './Card.js'
+import FormValidator from "./FormValidator.js";
 
 
 
@@ -46,8 +47,6 @@ function closePopupEsc(evt) {
   };
 };
 
-
-
 buttonOpenPopupEditProfile.addEventListener('click', openProfilePopup);
 buttonClosePopupEditProfile.addEventListener('click', () => {
   closePopup(popupEditProfile)
@@ -69,13 +68,11 @@ const renderCard = (cardData) => {
   cardContainer.prepend(card.getCard());
 }
 
-
 // Кнопка закрытия картинки
 const buttonClosePopupImage = document.querySelector('.popup__close-image');
 buttonClosePopupImage.addEventListener('click', () => {
   closePopup(popupImageOpen)
 })
-
 
 cards.forEach((card) => {
   renderCard(card);
@@ -129,9 +126,23 @@ function submitEditProfileForm(evt) {
 
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
 
-//вызвали функцию валидации
+//вызвали функцию валидации без ООП
+// enableValidation(validationConfig);
+
+// вызвали функцию валидации с ООП
+// FormValidator.enableValidation();
+
+
+
+function enableValidation(config) {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+
+  formList.forEach((formElement) => {
+    const formInfoValidator = new FormValidator (config, formElement);
+    formInfoValidator.enableValidation();
+  })
+}
+
 enableValidation(validationConfig);
-
-
 
 
