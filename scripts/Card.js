@@ -1,9 +1,11 @@
+import { popupImageOpen, popupImage, popupCaption} from "./constants.js";
 class Card {
   constructor(cardData, selector, openPopup) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._openPopup = openPopup;
     this._container = selector.content.querySelector('.element').cloneNode(true);
+
   }
 
   _setLikeButton() {
@@ -25,10 +27,6 @@ class Card {
   }
 
   _setCardImage() {
-    const popupImageOpen = document.querySelector('.popup_image-open')
-    const popupImage = popupImageOpen.querySelector('.popup__image')
-    const popupCaption = popupImageOpen.querySelector('.popup__caption')
-
     const cardImage = this._container.querySelector('.element__photo')
     cardImage.setAttribute('src', this._link);
     cardImage.setAttribute('alt', this._name);
@@ -58,8 +56,6 @@ class Card {
 
     return this._container;
   }
-
 }
 
 export default Card;
-

@@ -1,9 +1,7 @@
 // РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
-import { cards, validationConfig } from "./constants.js";
+import { cards, validationConfig, popupImageOpen} from "./constants.js";
 import Card from './Card.js'
 import FormValidator from "./FormValidator.js";
-
-
 
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -16,14 +14,12 @@ const profileInfo = document.querySelector('.profile__info')
 const profileName = profileInfo.querySelector('.profile__name')
 const profileJob = profileInfo.querySelector('.profile__aboute')
 
-
 //Универсальные функции открытия и закрытия попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened')
   document.addEventListener('keydown', closePopupEsc);
   popup.addEventListener('click', closePopupOverlay);
 };
-
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -60,8 +56,11 @@ function openProfilePopup(event) {
 
 const template = document.querySelector('#card-item-template');
 const cardContainer = document.querySelector('.elements');
-const popupImageOpen = document.querySelector('.popup_image-open')
-
+// Вынес константы в глобальную область видимости(документа Constants.js), чтобы не искать их второй раз по DOM дереву.
+// const popupImageOpen = document.querySelector('.popup_image-open')
+// export const popupImageOpen = document.querySelector('.popup_image-open');
+// export const popupImage = popupImageOpen.querySelector('.popup__image');
+// export const popupCaption = popupImageOpen.querySelector('.popup__caption');
 
 const renderCard = (cardData) => {
   const card = new Card(cardData, template, openPopup);
@@ -96,7 +95,6 @@ buttonClosePopupAddCard.addEventListener('click', () => {
   closePopup(popupCards)
 })
 
-
 //Обрабатываем форму. первый метод
 
 popupFormAdd.addEventListener('submit', (e) => {
@@ -125,9 +123,6 @@ function submitEditProfileForm(evt) {
 }
 
 popupFormEdit.addEventListener('submit', submitEditProfileForm);
-
-//вызвали функцию валидации без ООП
-// enableValidation(validationConfig);
 
 // вызвали функцию валидации с ООП
 
