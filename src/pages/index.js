@@ -1,7 +1,7 @@
 // РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
-import { cards, validationConfig, popupImageOpen} from "./constants.js";
-import Card from './Card.js'
-import FormValidator from "./FormValidator.js";
+import { cards, validationConfig, popupImageOpen} from "../components/constants.js";
+import Card from '../components/Card.js'
+import FormValidator from "../components/FormValidator.js";
 
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -136,5 +136,6 @@ function enableValidation(config) {
 }
 
 enableValidation(validationConfig);
+
 
 
