@@ -1,7 +1,9 @@
-// РАБОТА ПО КОММЕНТАРИЮ "МОЖНО И ЛУЧШЕ С РЕВЬЮ"
-import { cards, validationConfig, popupImageOpen} from "../components/constants.js";
-import Card from '../components/Card.js'
+import './index.css'
+
+import { cards, validationConfig, popupImageOpen} from "../utils/constants.js";
+import { Card } from '../components/Card'
 import FormValidator from "../components/FormValidator.js";
+
 
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
@@ -56,11 +58,6 @@ function openProfilePopup(event) {
 
 const template = document.querySelector('#card-item-template');
 const cardContainer = document.querySelector('.elements');
-// Вынес константы в глобальную область видимости(документа Constants.js), чтобы не искать их второй раз по DOM дереву.
-// const popupImageOpen = document.querySelector('.popup_image-open')
-// export const popupImageOpen = document.querySelector('.popup_image-open');
-// export const popupImage = popupImageOpen.querySelector('.popup__image');
-// export const popupCaption = popupImageOpen.querySelector('.popup__caption');
 
 const renderCard = (cardData) => {
   const card = new Card(cardData, template, openPopup);

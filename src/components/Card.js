@@ -1,4 +1,5 @@
-import { popupImageOpen, popupImage, popupCaption} from "./constants.js";
+import { popupImageOpen, popupImage, popupCaption} from '../utils/constants.js';
+
 class Card {
   constructor(cardData, selector, openPopup) {
     this._name = cardData.name;
@@ -58,4 +59,4 @@ class Card {
   }
 }
 
-export default Card;
+export {Card}
