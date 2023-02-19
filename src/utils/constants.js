@@ -1,27 +1,34 @@
+import CardImagesCoffe from '../images/coffe.jpg'
+import CardImagesJuice from '../images/orange-juice.png'
+import CardImagesPiano from '../images/piano.png'
+import CardImagesCosmo from '../images/CCCP.png'
+import CardImagesPizza from '../images/pizza.png'
+import CardImagesPhoto from '../images/photograph.jpg'
+
 export const cards = [
   {
     name: 'Coffee',
-    link: '../images/coffe.jpg'
+    link: CardImagesCoffe
   },
   {
     name: 'Глинтвейн',
-    link: './images/orange-juice.png'
+    link: CardImagesJuice
   },
   {
     name: 'Пианист',
-    link: './images/piano.png'
+    link: CardImagesPiano
   },
   {
     name: 'Космонавт',
-    link: './images/CCCP.png'
+    link: CardImagesCosmo
   },
   {
     name: 'Вкуснотища!',
-    link: './images/pizza.png'
+    link: CardImagesPizza
   },
   {
-    name: 'Челябинская область',
-    link: './images/photograph.jpg'
+    name: 'Photo',
+    link: CardImagesPhoto
   }
 ];
 

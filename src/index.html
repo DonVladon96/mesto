@@ -7,18 +7,26 @@
     <meta name="Title" content="Mesto" />
     <meta name="Translate" content="Место" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
+
     <title>Mesto</title>
   </head>
 
   <body class="body-container">
     <div class="main-page">
       <header class="header">
-        <img src="images/logo.svg" alt="Логотип" class="header__logo" />
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="Логотип"
+          class="header__logo"
+        />
       </header>
       <main class="main-content">
         <section class="profile section section_size_narrow">
-          <img src="images/Avatar.png" alt="Аватар" class="profile__avatar" />
+          <img
+            src="<%=require('./images/Avatar.png')%>"
+            alt="Аватар"
+            class="profile__avatar"
+          />
           <div class="profile__info">
             <div class="profile__name-content">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -145,7 +153,7 @@
         </div>
       </article>
     </template>
-    <script defer type="module" src="./pages/index.js"></script>
-    <script defer type="module" src="./components/Card.js"></script>
+    <!-- <script defer type="module" src="./pages/index.js"></script>
+    <script defer type="module" src="./components/Card.js"></script> -->
   </body>
 </html>

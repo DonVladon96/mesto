@@ -1,5 +1,4 @@
 import './index.css'
-
 import { cards, validationConfig, popupImageOpen} from "../utils/constants.js";
 import { Card } from '../components/Card'
 import FormValidator from "../components/FormValidator.js";
