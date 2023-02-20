@@ -60,42 +60,40 @@ function openProfilePopup(event) {
   jobInput.value = profileJob.textContent;
 }
 
-
-// рендерим карточки с помощью Section Новый способ
-const cardListSection = new Section({
-  renderer: (item) => {
-    cardListSection.setItem(getCard(item))
-  },
-  cardContainer
+// Section Новый способ
+const cardItems = cards.map((cardData) => {
+  return new Card(cardData, template, openPopup);
 });
 
-cardListSection.rendererItems();
-
-function getCard (cardData) {
-  const card = new Card(cardData, template, openPopup);
-  return card.getCard();
+const renderer = (container, card) => {
+  container.prepend(card.getCard());
 };
+
+const cardListSection = new Section(
+  {
+    items: cardItems,
+    renderer: renderer
+  },
+  cardContainer
+);
+
+cardListSection.renderItems();
 
 
 // // Старый способ без Section который отображает карточки
-// const renderCard = (cardData) => {
+// function getCard (cardData) {
 //   const card = new Card(cardData, template, openPopup);
-//   cardContainer.prepend(card.getCard());
+//   return card.getCard()
 // };
-
 // cards.forEach((cardData) => {
 //   renderCard(cardData);
 // });
-
-
 
 // Кнопка закрытия картинки
 const buttonClosePopupImage = document.querySelector(".popup__close-image");
 buttonClosePopupImage.addEventListener("click", () => {
   closePopup(popupImageOpen);
 });
-
-
 
 // ПИШЕМ КАК В ВЕБИНАРЕ.
 const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
@@ -116,6 +114,7 @@ buttonClosePopupAddCard.addEventListener("click", () => {
 
 //Обрабатываем форму. первый метод
 
+
 popupFormAdd.addEventListener("submit", (e) => {
   e.preventDefault();
   const newCard = {
@@ -124,8 +123,8 @@ popupFormAdd.addEventListener("submit", (e) => {
   };
 
   if (!newCard.name || !newCard.link) return;
-
-  renderCard(newCard);
+  const renderCard = new Card(newCard, template, openPopup);
+  cardListSection.addItem(renderCard)
   closePopup(popupCards);
   e.target.reset();
 });
