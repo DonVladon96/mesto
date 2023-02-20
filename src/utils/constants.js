@@ -1,3 +1,4 @@
+//картинки для карточек
 import CardImagesCoffe from '../images/coffe.jpg'
 import CardImagesJuice from '../images/orange-juice.png'
 import CardImagesPiano from '../images/piano.png'
@@ -5,6 +6,24 @@ import CardImagesCosmo from '../images/CCCP.png'
 import CardImagesPizza from '../images/pizza.png'
 import CardImagesPhoto from '../images/photograph.jpg'
 
+//константы
+export const buttonOpenPopupEditProfile = document.querySelector('.profile__edit');
+export const popupEditProfile = document.querySelector('.popup_edit-profile');
+export const buttonClosePopupEditProfile = document.querySelector('.popup__close');
+export const popupFormEdit = document.querySelector('#popup-form')
+export const popupFormAdd = document.querySelector('#popup-form-card');
+export const nameInput = popupFormEdit.querySelector('#input-name')
+export const jobInput = popupFormEdit.querySelector('#input-job')
+export const profileInfo = document.querySelector('.profile__info')
+export const profileName = profileInfo.querySelector('.profile__name')
+export const profileJob = profileInfo.querySelector('.profile__aboute')
+export const template = document.querySelector("#card-item-template");
+export const cardContainer = document.querySelector(".elements");
+export const popupImageOpen = document.querySelector('.popup_image-open');
+export const popupImage = popupImageOpen.querySelector('.popup__image');
+export const popupCaption = popupImageOpen.querySelector('.popup__caption');
+
+//массив карточек
 export const cards = [
   {
     name: 'Coffee',
@@ -42,6 +61,4 @@ export const validationConfig = {
   errorClass: 'popup__input-error_visible'
 };
 
-export const popupImageOpen = document.querySelector('.popup_image-open');
-export const popupImage = popupImageOpen.querySelector('.popup__image');
-export const popupCaption = popupImageOpen.querySelector('.popup__caption');
+

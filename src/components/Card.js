@@ -6,7 +6,6 @@ class Card {
     this._link = cardData.link;
     this._openPopup = openPopup;
     this._container = selector.content.querySelector('.element').cloneNode(true);
-
   }
 
   _setLikeButton() {
