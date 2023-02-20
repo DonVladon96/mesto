@@ -1,6 +1,22 @@
 import "./index.css";
 import { Section } from "../components/Section.js";
-import { template, cardContainer, cards, validationConfig, popupImageOpen, buttonOpenPopupEditProfile, popupEditProfile, buttonClosePopupEditProfile, popupFormEdit, popupFormAdd, nameInput, jobInput, profileInfo, profileName, profileJob} from "../utils/constants.js";
+import {
+  template,
+  cardContainer,
+  cards,
+  validationConfig,
+  popupImageOpen,
+  buttonOpenPopupEditProfile,
+  popupEditProfile,
+  buttonClosePopupEditProfile,
+  popupFormEdit,
+  popupFormAdd,
+  nameInput,
+  jobInput,
+  profileInfo,
+  profileName,
+  profileJob,
+} from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
 
@@ -45,10 +61,33 @@ function openProfilePopup(event) {
 }
 
 
-const renderCard = (cardData) => {
+// рендерим карточки с помощью Section Новый способ
+const cardListSection = new Section({
+  renderer: (item) => {
+    cardListSection.setItem(getCard(item))
+  },
+  cardContainer
+});
+
+cardListSection.rendererItems();
+
+function getCard (cardData) {
   const card = new Card(cardData, template, openPopup);
-  cardContainer.prepend(card.getCard());
+  return card.getCard();
 };
+
+
+// // Старый способ без Section который отображает карточки
+// const renderCard = (cardData) => {
+//   const card = new Card(cardData, template, openPopup);
+//   cardContainer.prepend(card.getCard());
+// };
+
+// cards.forEach((cardData) => {
+//   renderCard(cardData);
+// });
+
+
 
 // Кнопка закрытия картинки
 const buttonClosePopupImage = document.querySelector(".popup__close-image");
@@ -56,9 +95,7 @@ buttonClosePopupImage.addEventListener("click", () => {
   closePopup(popupImageOpen);
 });
 
-cards.forEach((card) => {
-  renderCard(card);
-});
+
 
 // ПИШЕМ КАК В ВЕБИНАРЕ.
 const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");

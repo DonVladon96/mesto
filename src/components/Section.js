@@ -1,19 +1,18 @@
-export default class Section {
+export class Section {
   constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     this._containerSelector = containerSelector;
   }
 
-  rendererItems(item) {
-    item.array.forEach((item) => {
-      //почему array? или использовать map?
+  rendererItems(items) {
+    items.forEach((item) => {
       this._renderer(item);
     });
   }
 
-  clear() {
-  this._container.innerHTML = '';
-  }
+  // clear() {
+  // this._container.innerHTML = '';
+  // }
 
   setItem(element){
     this._container.prepend(element)
