@@ -13,12 +13,18 @@ import {
   popupFormAdd,
   nameInput,
   jobInput,
-  profileInfo,
   profileName,
   profileJob,
+  buttonOpenPopupAddCard,
+  popupCards,
+  titleInput,
+  linkInput
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
+
+
+
 
 //Универсальные функции открытия и закрытия попапов
 function openPopup(popup) {
@@ -34,20 +40,20 @@ function closePopup(popup) {
 }
 
 //скрытие полей по клику на оверлей
-const closePopupOverlay = (event) => {
-  if (event.target !== event.currentTarget) {
-    return;
-  }
-  closePopup(event.target);
-};
+// const closePopupOverlay = (event) => {
+//   if (event.target !== event.currentTarget) {
+//     return;
+//   }
+//   closePopup(event.target);
+// };
 
 //закрытие попапа по клавише Esc
-function closePopupEsc(evt) {
-  if (evt.key === "Escape") {
-    const popupHasOpened = document.querySelector(".popup_opened");
-    closePopup(popupHasOpened);
-  }
-}
+// function closePopupEsc(evt) {
+//   if (evt.key === "Escape") {
+//     const popupHasOpened = document.querySelector(".popup_opened");
+//     closePopup(popupHasOpened);
+//   }
+// }
 
 buttonOpenPopupEditProfile.addEventListener("click", openProfilePopup);
 buttonClosePopupEditProfile.addEventListener("click", () => {
@@ -59,6 +65,35 @@ function openProfilePopup(event) {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
+
+// Эксперимент
+// const buttonClosePopup = document.querySelector(".popup__close");
+// buttonClosePopup.addEventListener("click", () => {
+//   closePopup(popup);
+// });
+
+
+// // Кнопка закрытия картинки
+// const buttonClosePopupImage = document.querySelector(".popup__close-image");
+// buttonClosePopupImage.addEventListener("click", () => {
+//   closePopup(popupImageOpen);
+// });
+
+// // Кнопка закрытия редактора карточек
+// const buttonClosePopupAddCard = document.querySelector(".popup__cards-close");
+// buttonClosePopupAddCard.addEventListener("click", () => {
+//   closePopup(popupCards);
+// });
+
+
+//кнопка открытия редактора карточек
+buttonOpenPopupAddCard.addEventListener("click", () => {
+  openPopup(popupCards);
+});
+
+
+
+
 
 // Section Новый способ
 const cardItems = cards.map((cardData) => {
@@ -89,28 +124,9 @@ cardListSection.renderItems();
 //   renderCard(cardData);
 // });
 
-// Кнопка закрытия картинки
-const buttonClosePopupImage = document.querySelector(".popup__close-image");
-buttonClosePopupImage.addEventListener("click", () => {
-  closePopup(popupImageOpen);
-});
 
-// ПИШЕМ КАК В ВЕБИНАРЕ.
-const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
-const popupCards = document.querySelector(".popup-cards");
-const titleInput = popupCards.querySelector("#card-name");
-const linkInput = popupCards.querySelector("#card-link");
 
-//кнопка открытия редактора карточек
-buttonOpenPopupAddCard.addEventListener("click", () => {
-  openPopup(popupCards);
-});
 
-// Кнопка закрытия редактора карточек
-const buttonClosePopupAddCard = document.querySelector(".popup__cards-close");
-buttonClosePopupAddCard.addEventListener("click", () => {
-  closePopup(popupCards);
-});
 
 //Обрабатываем форму. первый метод
 

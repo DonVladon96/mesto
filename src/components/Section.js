@@ -11,6 +11,7 @@ export class Section {
     });
   }
 
+  // Сделать отчистку полей как в теории
   // clear() {
   // this._container.innerHTML = '';
   // }

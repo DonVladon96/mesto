@@ -23,6 +23,13 @@ export const popupImageOpen = document.querySelector('.popup_image-open');
 export const popupImage = popupImageOpen.querySelector('.popup__image');
 export const popupCaption = popupImageOpen.querySelector('.popup__caption');
 
+// ПИШЕМ КАК В ВЕБИНАРЕ.
+export const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
+export const popupCards = document.querySelector(".popup-cards");
+export const titleInput = popupCards.querySelector("#card-name");
+export const linkInput = popupCards.querySelector("#card-link");
+
+
 //массив карточек
 export const cards = [
   {
