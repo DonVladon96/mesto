@@ -11,17 +11,10 @@ import {
   popupImageOpen,
   buttonOpenPopupEditProfile,
   popupEditProfile,
-  buttonClosePopupEditProfile,
-  popupFormEdit,
-  popupFormAdd,
-  nameInput,
-  jobInput,
   profileName,
   profileJob,
   buttonOpenPopupAddCard,
   popupCards,
-  titleInput,
-  linkInput,
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
@@ -29,19 +22,18 @@ import FormValidator from "../components/FormValidator.js";
 //экземпляр для открытия картинки
 const addCardForm = new PopupWithForm({
   popupSelector: popupCards,
-  submitForm: handleSubmitAddCardForm
+  submitForm: handleSubmitAddCardForm,
 });
 
 function handleSubmitAddCardForm({ cardName, cardLink }) {
-  const newCard = new Card({name: cardName,link: cardLink}, template, handleCardClick);
-  cardListSection.addItem(newCard.getCard())
-  popupAddPlace.close();
+  const newCard = new Card(
+    { name: cardName, link: cardLink },
+    template,
+    handleCardClick
+  );
+  cardListSection.addItem(newCard);
+  addCardForm.close();
 }
-
-// function createCard (cardData) {
-//   const newCard = new Card(cardData, template, handleCardClick);
-//   return newCard.getCard();
-// }
 
 //навешиваем слушатель события открытия редактора карточки
 buttonOpenPopupAddCard.addEventListener("click", () => {
@@ -50,16 +42,11 @@ buttonOpenPopupAddCard.addEventListener("click", () => {
 
 addCardForm.setEventListeners();
 
-
-
-
 //Экземпляр поапа формы редактированя профиля
 const openEditProfile = new PopupWithForm({
   popupSelector: popupEditProfile,
   submitForm: openProfilePopup,
 });
-
-
 
 function openProfilePopup({ dataName, dataJob }) {
   viewUserInfo.setUserInfo({
@@ -91,8 +78,6 @@ popupViewImages.setEventListeners();
 function handleCardClick(name, link) {
   popupViewImages.open(name, link);
 }
-
-//сделать слушатель на окрытие попапа редактора карточки
 
 // Section Новый способ
 const cardItems = cards.map((cardData) => {

@@ -13,8 +13,6 @@ export default class UserInfo {
   }
 
   setUserInfo({dataName, dataJob}) {
-    console.log(this._nameElement)
-    console.log(this.dataName)
     this._nameElement.textContent = dataName;
     this._jobElement.textContent = dataJob;
   };
