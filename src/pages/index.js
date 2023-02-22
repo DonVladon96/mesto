@@ -1,5 +1,8 @@
 import "./index.css";
 import { Section } from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm";
+import PopupWithImage from "../components/PopupWithImage";
+import UserInfo from "../components/UserInfo.js";
 import {
   template,
   cardContainer,
@@ -18,86 +21,82 @@ import {
   buttonOpenPopupAddCard,
   popupCards,
   titleInput,
-  linkInput
+  linkInput,
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
 
+//экземпляр для открытия картинки
+const addCardForm = new PopupWithForm({
+  popupSelector: popupCards,
+  submitForm: handleSubmitAddCardForm
+});
 
-
-
-//Универсальные функции открытия и закрытия попапов
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEsc);
-  popup.addEventListener("click", closePopupOverlay);
+function handleSubmitAddCardForm({ cardName, cardLink }) {
+  const newCard = new Card({name: cardName,link: cardLink}, template, handleCardClick);
+  cardListSection.addItem(newCard.getCard())
+  popupAddPlace.close();
 }
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupEsc);
-  popup.removeEventListener("click", closePopupOverlay);
-}
-
-//скрытие полей по клику на оверлей
-// const closePopupOverlay = (event) => {
-//   if (event.target !== event.currentTarget) {
-//     return;
-//   }
-//   closePopup(event.target);
-// };
-
-//закрытие попапа по клавише Esc
-// function closePopupEsc(evt) {
-//   if (evt.key === "Escape") {
-//     const popupHasOpened = document.querySelector(".popup_opened");
-//     closePopup(popupHasOpened);
-//   }
+// function createCard (cardData) {
+//   const newCard = new Card(cardData, template, handleCardClick);
+//   return newCard.getCard();
 // }
 
-buttonOpenPopupEditProfile.addEventListener("click", openProfilePopup);
-buttonClosePopupEditProfile.addEventListener("click", () => {
-  closePopup(popupEditProfile);
+//навешиваем слушатель события открытия редактора карточки
+buttonOpenPopupAddCard.addEventListener("click", () => {
+  addCardForm.open();
 });
 
-function openProfilePopup(event) {
-  openPopup(popupEditProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+addCardForm.setEventListeners();
+
+
+
+
+//Экземпляр поапа формы редактированя профиля
+const openEditProfile = new PopupWithForm({
+  popupSelector: popupEditProfile,
+  submitForm: openProfilePopup,
+});
+
+
+
+function openProfilePopup({ dataName, dataJob }) {
+  viewUserInfo.setUserInfo({
+    dataName,
+    dataJob,
+  });
+
+  openEditProfile.close();
 }
 
-// Эксперимент
-// const buttonClosePopup = document.querySelector(".popup__close");
-// buttonClosePopup.addEventListener("click", () => {
-//   closePopup(popup);
-// });
+openEditProfile.setEventListeners();
 
-
-// // Кнопка закрытия картинки
-// const buttonClosePopupImage = document.querySelector(".popup__close-image");
-// buttonClosePopupImage.addEventListener("click", () => {
-//   closePopup(popupImageOpen);
-// });
-
-// // Кнопка закрытия редактора карточек
-// const buttonClosePopupAddCard = document.querySelector(".popup__cards-close");
-// buttonClosePopupAddCard.addEventListener("click", () => {
-//   closePopup(popupCards);
-// });
-
-
-//кнопка открытия редактора карточек
-buttonOpenPopupAddCard.addEventListener("click", () => {
-  openPopup(popupCards);
+const viewUserInfo = new UserInfo({
+  dataName: profileName,
+  dataJob: profileJob,
 });
 
+// Слушатель на открытие попапа редактирования профиля
+buttonOpenPopupEditProfile.addEventListener("click", () => {
+  openEditProfile.open();
+});
 
+// *Для каждого попапа создавайте свой экземпляр класса PopupWithForm*
+const popupViewImages = new PopupWithImage(popupImageOpen);
 
+popupViewImages.setEventListeners();
 
+//функция открытия попапа картинки
+function handleCardClick(name, link) {
+  popupViewImages.open(name, link);
+}
+
+//сделать слушатель на окрытие попапа редактора карточки
 
 // Section Новый способ
 const cardItems = cards.map((cardData) => {
-  return new Card(cardData, template, openPopup);
+  return new Card(cardData, template, handleCardClick);
 });
 
 const renderer = (container, card) => {
@@ -107,56 +106,12 @@ const renderer = (container, card) => {
 const cardListSection = new Section(
   {
     items: cardItems,
-    renderer: renderer
+    renderer: renderer,
   },
   cardContainer
 );
 
 cardListSection.renderItems();
-
-
-// // Старый способ без Section который отображает карточки
-// function getCard (cardData) {
-//   const card = new Card(cardData, template, openPopup);
-//   return card.getCard()
-// };
-// cards.forEach((cardData) => {
-//   renderCard(cardData);
-// });
-
-
-
-
-
-//Обрабатываем форму. первый метод
-
-
-popupFormAdd.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const newCard = {
-    name: titleInput.value,
-    link: linkInput.value,
-  };
-
-  if (!newCard.name || !newCard.link) return;
-  const renderCard = new Card(newCard, template, openPopup);
-  cardListSection.addItem(renderCard)
-  closePopup(popupCards);
-  e.target.reset();
-});
-
-// делаем сабмит. второй метод
-
-function submitEditProfileForm(evt) {
-  evt.preventDefault();
-  const nameValue = nameInput.value;
-  const jobValue = jobInput.value;
-  profileName.textContent = nameValue;
-  profileJob.textContent = jobValue;
-  closePopup(popupEditProfile);
-}
-
-popupFormEdit.addEventListener("submit", submitEditProfileForm);
 
 // вызвали функцию валидации с ООП
 

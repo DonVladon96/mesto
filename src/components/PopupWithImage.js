@@ -8,7 +8,7 @@ export default class PopupWithImage extends Popup {
     this._popupCaption = this._popupSelector.querySelector(".popup__caption");
   }
 
-  open(link, name) {
+  open(name, link) {
     this._popupImage.src = link;
     this._popupImage.alt = name;
     this._popupImage.textContent = name;
