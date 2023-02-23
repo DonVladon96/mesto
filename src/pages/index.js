@@ -25,13 +25,17 @@ const addCardForm = new PopupWithForm({
   submitForm: handleSubmitAddCardForm,
 });
 
+function createCard(cardData) {
+  const card = new Card(cardData, template, handleCardClick);
+  const cardElement = card.getCard()
+  return cardElement
+}
+
 function handleSubmitAddCardForm({ cardName, cardLink }) {
-  const newCard = new Card(
-    { name: cardName, link: cardLink },
-    template,
-    handleCardClick
-  );
-  cardListSection.addItem(newCard);
+  cardListSection.addItem(createCard({
+    name: cardName,
+    link: cardLink
+  }));
   addCardForm.close();
 }
 
@@ -66,6 +70,12 @@ const viewUserInfo = new UserInfo({
 
 // Слушатель на открытие попапа редактирования профиля
 buttonOpenPopupEditProfile.addEventListener("click", () => {
+  const { dataName, dataJob } = viewUserInfo.getUserInfo();
+  openEditProfile._getInputValues({
+    name: dataName,
+    job: dataJob
+  });
+
   openEditProfile.open();
 });
 
@@ -79,19 +89,13 @@ function handleCardClick(name, link) {
   popupViewImages.open(name, link);
 }
 
-// Section Новый способ
-const cardItems = cards.map((cardData) => {
-  return new Card(cardData, template, handleCardClick);
-});
-
-const renderer = (container, card) => {
-  container.prepend(card.getCard());
-};
 
 const cardListSection = new Section(
   {
-    items: cardItems,
-    renderer: renderer,
+    items: cards,
+    renderer: (item) => {
+    cardListSection.addItem(createCard(item))
+    }
   },
   cardContainer
 );

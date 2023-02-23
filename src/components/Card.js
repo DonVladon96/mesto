@@ -1,9 +1,3 @@
-import {
-  popupImageOpen,
-  popupImage,
-  popupCaption,
-} from "../utils/constants.js";
-
 class Card {
   constructor(cardData, selector, handleCardClick) {
     this._name = cardData.name;
@@ -12,50 +6,47 @@ class Card {
     this._container = selector.content
       .querySelector(".element")
       .cloneNode(true);
-  }
-
-  _setLikeButton() {
-    const likeButton = this._container.querySelector(".element__button-like");
-    likeButton.addEventListener("click", () => {
-      likeButton.classList.toggle("element__button-like_active");
-    });
-
-    return likeButton;
-  }
-
-  _setTrashButton() {
-    const buttonTrash = this._container.querySelector(".element__button-trash");
-    buttonTrash.addEventListener("click", () => {
-      this._container.remove();
-    });
-
-    return buttonTrash;
+    this._likeButton = this._container.querySelector(".element__button-like");
+    this._cardTitle = this._container.querySelector(".element__title");
+    this._cardImage = this._container.querySelector(".element__photo");
+    this._buttonTrash = this._container.querySelector(".element__button-trash");
   }
 
   _setCardImage() {
-    const cardImage = this._container.querySelector(".element__photo");
-    cardImage.setAttribute("src", this._link);
-    cardImage.setAttribute("alt", this._name);
+    this._cardImage = this._container.querySelector(".element__photo");
+    this._cardImage.setAttribute("src", this._link);
+    this._cardImage.setAttribute("alt", this._name);
 
-    cardImage.addEventListener("click", () => {
-      this._handleCardClick(this._name, this._link);
-    });
-
-    return cardImage;
+    return this._cardImage;
   }
 
   _setCardTitle() {
-    const cardTitle = this._container.querySelector(".element__title");
-    cardTitle.textContent = this._name;
+    this._cardTitle = this._container.querySelector(".element__title");
+    this._cardTitle.textContent = this._name;
 
-    return cardTitle;
+    return this._cardTitle;
+  }
+
+  //создаю приватный метод для установки всех обработчиков (rew 1)
+  _setEventListeners() {
+    this._cardImage.addEventListener("click", () => {
+      this._handleCardClick(this._name, this._link);
+    });
+
+    this._buttonTrash = this._container.querySelector(".element__button-trash");
+    this._buttonTrash.addEventListener("click", () => {
+      this._container.remove();
+    });
+
+    this._likeButton.addEventListener("click", () => {
+      this._likeButton.classList.toggle("element__button-like_active");
+    });
   }
 
   getCard() {
-    this._setLikeButton();
-    this._setTrashButton();
     this._setCardTitle();
     this._setCardImage();
+    this._setEventListeners();
 
     return this._container;
   }

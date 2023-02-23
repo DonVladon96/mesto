@@ -1,22 +1,17 @@
 export class Section {
   constructor({ items, renderer }, containerSelector) {
-    this._items = items;
+    this._cards = items;
     this._renderer = renderer;
     this._container = containerSelector;
   }
 
   renderItems() {
-    this._items.forEach(item => {
-      this._renderer(this._container, item)
+    this._cards.forEach(item => {
+      this._renderer(item)
     });
   }
 
-  // Сделать отчистку полей как в теории
-  // clear() {
-  // this._container.innerHTML = '';
-  // }
-
   addItem(element) {
-    this._renderer(this._container, element)
+    this._container.prepend(element);
   }
 }
