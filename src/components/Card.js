@@ -27,6 +27,16 @@ class Card {
     return this._cardTitle;
   }
 
+  
+
+  _deleteCard() {
+    this._container.remove();
+  }
+
+  _toggleLike() {
+    this._likeButton.classList.toggle("element__button-like_active");
+  }
+
   //создаю приватный метод для установки всех обработчиков (rew 1)
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
@@ -35,11 +45,11 @@ class Card {
 
     this._buttonTrash = this._container.querySelector(".element__button-trash");
     this._buttonTrash.addEventListener("click", () => {
-      this._container.remove();
+      this._deleteCard();
     });
 
     this._likeButton.addEventListener("click", () => {
-      this._likeButton.classList.toggle("element__button-like_active");
+      this._toggleLike();
     });
   }
 

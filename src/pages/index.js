@@ -54,8 +54,8 @@ const openEditProfile = new PopupWithForm({
 
 function openProfilePopup({ dataName, dataJob }) {
   viewUserInfo.setUserInfo({
-    dataName,
-    dataJob,
+    dataName: dataName,
+    dataJob: dataJob
   });
 
   openEditProfile.close();
@@ -71,9 +71,9 @@ const viewUserInfo = new UserInfo({
 // Слушатель на открытие попапа редактирования профиля
 buttonOpenPopupEditProfile.addEventListener("click", () => {
   const { dataName, dataJob } = viewUserInfo.getUserInfo();
-  openEditProfile._getInputValues({
-    name: dataName,
-    job: dataJob
+  openEditProfile._setInputValues({
+    dataName,
+    dataJob
   });
 
   openEditProfile.open();
