@@ -90,10 +90,18 @@ const openEditProfile = new PopupWithForm({
 });
 
 function openProfilePopup({ dataName, dataJob }) {
-  viewUserInfo.setUserInfo({
-    dataName: dataName,
-    dataJob: dataJob
-  });
+  api.updateUserInfo({
+    name: dataName,
+    about: dataJob
+  })
+  .then((data) => {
+    viewUserInfo.setUserInfo({
+      dataName: data.name,
+      dataJob: data.about,
+      avatar: data.avatar
+    });
+  })
+
 
   openEditProfile.close();
 }
@@ -105,7 +113,7 @@ const viewUserInfo = new UserInfo({
   dataJob: profileJob,
   avatar: profileAvatar
 });
-console.log(profileAvatar);
+
 viewUserInfo.setUserInfo({
   dataName: data.name,
   dataJob: data.about,
