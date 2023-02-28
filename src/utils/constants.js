@@ -22,6 +22,8 @@ export const cardContainer = document.querySelector(".elements");
 export const popupImageOpen = document.querySelector('.popup_image-open');
 export const popupImage = popupImageOpen.querySelector('.popup__image');
 export const popupCaption = popupImageOpen.querySelector('.popup__caption');
+export const profileAvatar = document.querySelector('.profile__avatar');
+
 
 // ПИШЕМ КАК В ВЕБИНАРЕ.
 export const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");

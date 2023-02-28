@@ -87,6 +87,51 @@
           </form>
         </div>
       </div>
+      <!-- Попап для удаления карточек -->
+      <div class="popup popup_delelte-card" id="popup_delelte-card">
+        <div class="popup__container">
+          <button type="button" class="popup__close"></button>
+          <form class="popup__form" id="popup-form-card" novalidate>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <button
+              type="submit"
+              class="popup__submit-button popup__submit-button_valid"
+              id="submit-button"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Попап для обновления аватара -->
+      <div class="popup popup_edit_avatar">
+        <div class="popup__container">
+          <button type="button" class="popup__close"></button>
+          <form class="popup__form" id="popup-avatar" novalidate>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <input
+              type="url"
+              name="cardLink"
+              placeholder="Ссылка на картинку"
+              class="popup__input popup__input_avatar-link"
+              id="avatar-link"
+              required
+            />
+            <span class="card-link-error popup__input-error"
+              >вы пропустили поле.</span
+            >
+            <button
+              type="submit"
+              class="popup__submit-button popup__submit-button_valid"
+              id="submit-button-card"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+
       <!-- Создаю попап для карточек-->
       <div class="popup popup_edit-profile popup-cards" id="popup-cards">
         <div class="popup__container">

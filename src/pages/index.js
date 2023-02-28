@@ -6,7 +6,6 @@ import UserInfo from "../components/UserInfo.js";
 import {
   template,
   cardContainer,
-  cards,
   validationConfig,
   popupImageOpen,
   buttonOpenPopupEditProfile,
@@ -15,9 +14,11 @@ import {
   profileJob,
   buttonOpenPopupAddCard,
   popupCards,
+  profileAvatar
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
+import Api from "../components/Api.js";
 
 //экземпляр для открытия картинки
 const addCardForm = new PopupWithForm({
@@ -46,6 +47,42 @@ buttonOpenPopupAddCard.addEventListener("click", () => {
 
 addCardForm.setEventListeners();
 
+
+
+// *Для каждого попапа создавайте свой экземпляр класса PopupWithForm*
+const popupViewImages = new PopupWithImage(popupImageOpen);
+
+popupViewImages.setEventListeners();
+
+//функция открытия попапа картинки
+function handleCardClick(name, link) {
+  popupViewImages.open(name, link);
+}
+
+
+
+const api = new Api();
+
+api.getInitialCards()
+.then((data)=> {
+  const cardListSection = new Section(
+    {
+      items: data,
+      renderer: (item) => {
+      cardListSection.addItem(createCard(item))
+      }
+    },
+    cardContainer
+  );
+
+  cardListSection.renderItems();
+})
+
+
+
+//получаем информацию о профиле
+api.getUserInfo()
+.then((data) =>{
 //Экземпляр поапа формы редактированя профиля
 const openEditProfile = new PopupWithForm({
   popupSelector: popupEditProfile,
@@ -66,41 +103,31 @@ openEditProfile.setEventListeners();
 const viewUserInfo = new UserInfo({
   dataName: profileName,
   dataJob: profileJob,
+  avatar: profileAvatar
 });
+console.log(profileAvatar);
+viewUserInfo.setUserInfo({
+  dataName: data.name,
+  dataJob: data.about,
+  avatar: data.avatar
+})
 
 // Слушатель на открытие попапа редактирования профиля
 buttonOpenPopupEditProfile.addEventListener("click", () => {
   const { dataName, dataJob } = viewUserInfo.getUserInfo();
-  openEditProfile._setInputValues({
+  openEditProfile.setInputValues({
     dataName,
     dataJob
   });
 
   openEditProfile.open();
 });
-
-// *Для каждого попапа создавайте свой экземпляр класса PopupWithForm*
-const popupViewImages = new PopupWithImage(popupImageOpen);
-
-popupViewImages.setEventListeners();
-
-//функция открытия попапа картинки
-function handleCardClick(name, link) {
-  popupViewImages.open(name, link);
-}
+})
 
 
-const cardListSection = new Section(
-  {
-    items: cards,
-    renderer: (item) => {
-    cardListSection.addItem(createCard(item))
-    }
-  },
-  cardContainer
-);
 
-cardListSection.renderItems();
+
+
 
 // вызвали функцию валидации с ООП
 
