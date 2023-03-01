@@ -36,13 +36,11 @@ class Card {
   }
 
   _deleteButtonIsVisible() {
-
-  this._api.getUserInfo()
-  .then((data) => {
-    if (data._id !== this._ownerId) {
-      this._buttonTrash.style.visibility='hidden'
-    }
-  });
+    this._api.getUserInfo().then((data) => {
+      if (data._id !== this._ownerId) {
+        this._buttonTrash.style.visibility = "hidden";
+      }
+    });
   }
 
   _toggleLike() {
@@ -62,11 +60,23 @@ class Card {
     });
 
     this._likeButton.addEventListener("click", () => {
+      if (this._likeButton.classList.contains("element__button-like_active")) {
+        this._api.deleteLike(this._cardId).then((data) => {
+          this._likes = data.likes;
+          this._setCardLikes();
+        });
+      } else {
+        this._api.addLike(this._cardId).then((data) => {
+          this._likes = data.likes;
+          this._setCardLikes();
+        });
+      }
+
       this._toggleLike();
     });
   }
 
-  _setCardLikes(){
+  _setCardLikes() {
     this._likeNumber.textContent = this._likes.length;
   }
 
