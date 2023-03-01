@@ -46,7 +46,15 @@ export default class Api {
       return response.json()
     })
   }
-  // другие методы работы с API
+
+  deleteCard(cardId){
+    return fetch(`${this._baseUrl}cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers
+    }).then((response) => {
+      return response.json()
+    })
+  }
 }
 
 // Токен: 8449ac58-7a24-4246-806a-a59752bbc1d5

@@ -1,4 +1,6 @@
+
 export default class UserInfo {
+  _userId = '';
   constructor({ dataName, dataJob, avatar }) {
     this._nameElement = dataName;
     this._jobElement = dataJob;
@@ -19,4 +21,5 @@ export default class UserInfo {
     this._jobElement.textContent = dataJob;
     this._avatarElement.src = avatar;
   };
+
 }

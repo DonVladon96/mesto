@@ -15,10 +15,12 @@ import {
   buttonOpenPopupAddCard,
   popupCards,
   profileAvatar,
+  deleteCardPopup
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
+import Popup from "../components/Popup";
 
 //экземпляр для формы добавления картинки
 const addCardForm = new PopupWithForm({
@@ -26,8 +28,18 @@ const addCardForm = new PopupWithForm({
   submitForm: handleSubmitAddCardForm,
 });
 
+const deletePopup = new Popup(
+  deleteCardPopup,
+  handleSubmitDeleteCard
+)
+
+function handleSubmitDeleteCard(cardId) {
+  const api = new Api();
+  api.deleteCard(cardId);
+}
+
 function createCard(cardData) {
-  const card = new Card(cardData, template, handleCardClick);
+  const card = new Card(cardData, template, handleCardClick, deletePopup);
   const cardElement = card.getCard();
   return cardElement;
 }
@@ -48,13 +60,18 @@ function handleSubmitAddCardForm({ cardName, cardLink }) {
     cardListSection.addItem(
       createCard({
         name: data.name,
-        link: data.link
+        link: data.link,
+        likes: data.likes
       })
     );
   });
 
   addCardForm.close();
 }
+
+//навешиваем слушатель события на удаление попапа
+
+
 
 //навешиваем слушатель события открытия редактора карточки
 buttonOpenPopupAddCard.addEventListener("click", () => {

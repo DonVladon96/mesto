@@ -23,6 +23,9 @@ export const popupImageOpen = document.querySelector('.popup_image-open');
 export const popupImage = popupImageOpen.querySelector('.popup__image');
 export const popupCaption = popupImageOpen.querySelector('.popup__caption');
 export const profileAvatar = document.querySelector('.profile__avatar');
+export const deleteCardPopup = document.querySelector('#popup_delelte-card');
+
+
 
 
 // ПИШЕМ КАК В ВЕБИНАРЕ.

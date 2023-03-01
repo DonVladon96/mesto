@@ -1,8 +1,18 @@
 export default class Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, deleteCardFunction = null) {
     this._popupItem = popupSelector;
     this._closeButton = this._popupItem.querySelector(".popup__close");
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._deleteCardFunction = deleteCardFunction;
+    this._deleteButton = this._popupItem.querySelector("#delete-submit-button");
+  }
+
+  setDeleteEvent(cardId) {
+    this._deleteButton.addEventListener("click", (evt) => {
+      evt.preventDefault()
+      this._deleteCardFunction(cardId)
+      this.close();
+    });
   }
 
   _handleEscClose(evt) {

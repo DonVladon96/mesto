@@ -1,11 +1,19 @@
+import Api from "./Api";
+
 class Card {
-  constructor(cardData, selector, handleCardClick) {
+  constructor(cardData, selector, handleCardClick, deletePopup) {
+    this._deletePopup = deletePopup;
+    this._api = new Api();
+    this._cardId = cardData._id;
+    this._likes = cardData.likes;
+    this._ownerId = cardData.owner._id;
     this._name = cardData.name;
     this._link = cardData.link;
     this._handleCardClick = handleCardClick;
     this._container = selector.content
       .querySelector(".element")
       .cloneNode(true);
+    this._likeNumber = this._container.querySelector(".element__like-number");
     this._likeButton = this._container.querySelector(".element__button-like");
     this._cardTitle = this._container.querySelector(".element__title");
     this._cardImage = this._container.querySelector(".element__photo");
@@ -27,10 +35,14 @@ class Card {
     return this._cardTitle;
   }
 
-  
+  _deleteButtonIsVisible() {
 
-  _deleteCard() {
-    this._container.remove();
+  this._api.getUserInfo()
+  .then((data) => {
+    if (data._id !== this._ownerId) {
+      this._buttonTrash.style.visibility='hidden'
+    }
+  });
   }
 
   _toggleLike() {
@@ -43,9 +55,10 @@ class Card {
       this._handleCardClick(this._name, this._link);
     });
 
-    this._buttonTrash = this._container.querySelector(".element__button-trash");
     this._buttonTrash.addEventListener("click", () => {
-      this._deleteCard();
+      this._deletePopup.open();
+      this._deletePopup.setEventListeners();
+      this._deletePopup.setDeleteEvent(this._cardId);
     });
 
     this._likeButton.addEventListener("click", () => {
@@ -53,10 +66,16 @@ class Card {
     });
   }
 
+  _setCardLikes(){
+    this._likeNumber.textContent = this._likes.length;
+  }
+
   getCard() {
     this._setCardTitle();
     this._setCardImage();
     this._setEventListeners();
+    this._setCardLikes();
+    this._deleteButtonIsVisible();
 
     return this._container;
   }
