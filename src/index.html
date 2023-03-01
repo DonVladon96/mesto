@@ -22,11 +22,12 @@
       </header>
       <main class="main-content">
         <section class="profile section section_size_narrow">
-          <img
+          <div class="profile__avatar-container">  <img
             src="<%=require('./images/Avatar.png')%>"
             alt="Аватар"
             class="profile__avatar"
           />
+        </div>
           <div class="profile__info">
             <div class="profile__name-content">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -194,8 +195,12 @@
         <img alt="Карачаевск" class="element__photo" />
         <div class="element__photo-info">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__button-like"></button>
+          <div class="element__like-container">
+            <button type="button" class="element__button-like"></button>
+            <div class="element__like-number"></div>
+          </div>
         </div>
+
       </article>
     </template>
     <!-- <script defer type="module" src="./pages/index.js"></script>
