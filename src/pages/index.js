@@ -15,7 +15,9 @@ import {
   buttonOpenPopupAddCard,
   popupCards,
   profileAvatar,
-  deleteCardPopup
+  deleteCardPopup,
+  updateAvatarPopupElement,
+  profileAvatarContainer
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
@@ -35,12 +37,13 @@ const deletePopup = new Popup(
 
 function handleSubmitDeleteCard(cardId) {
   const api = new Api();
-  api.deleteCard(cardId);
+  api.deleteCard(cardId)
 }
 
 function createCard(cardData) {
   const card = new Card(cardData, template, handleCardClick, deletePopup);
   const cardElement = card.getCard();
+
   return cardElement;
 }
 
@@ -71,7 +74,25 @@ function handleSubmitAddCardForm({ cardName, cardLink }) {
 
 //навешиваем слушатель события на удаление попапа
 
+//Обновление аватара
 
+const updateAvatarPopup = new PopupWithForm({
+  popupSelector: updateAvatarPopupElement,
+  submitForm: handleUpdateAvatar
+})
+
+function handleUpdateAvatar (data) {
+  const api = new Api()
+  api.updateUserAvatar(data).then((data) => {
+    profileAvatar.src = data.avatar
+  })
+  updateAvatarPopup.close();
+}
+
+updateAvatarPopup.setEventListeners();
+profileAvatarContainer.addEventListener('click', () => {
+  updateAvatarPopup.open();
+})
 
 //навешиваем слушатель события открытия редактора карточки
 buttonOpenPopupAddCard.addEventListener("click", () => {

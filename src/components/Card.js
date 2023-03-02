@@ -18,6 +18,7 @@ class Card {
     this._cardTitle = this._container.querySelector(".element__title");
     this._cardImage = this._container.querySelector(".element__photo");
     this._buttonTrash = this._container.querySelector(".element__button-trash");
+
   }
 
   _setCardImage() {
@@ -56,7 +57,7 @@ class Card {
     this._buttonTrash.addEventListener("click", () => {
       this._deletePopup.open();
       this._deletePopup.setEventListeners();
-      this._deletePopup.setDeleteEvent(this._cardId);
+      this._deletePopup.setDeleteEvent(this._cardId, this._container);
     });
 
     this._likeButton.addEventListener("click", () => {

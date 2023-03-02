@@ -7,10 +7,11 @@ export default class Popup {
     this._deleteButton = this._popupItem.querySelector("#delete-submit-button");
   }
 
-  setDeleteEvent(cardId) {
+  setDeleteEvent(cardId, container) {
     this._deleteButton.addEventListener("click", (evt) => {
       evt.preventDefault()
       this._deleteCardFunction(cardId)
+      container.remove();
       this.close();
     });
   }
