@@ -18,7 +18,6 @@ class Card {
     this._cardTitle = this._container.querySelector(".element__title");
     this._cardImage = this._container.querySelector(".element__photo");
     this._buttonTrash = this._container.querySelector(".element__button-trash");
-
   }
 
   _setCardImage() {

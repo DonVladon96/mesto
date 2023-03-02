@@ -9,95 +9,126 @@ export default class Api {
     };
   }
 
-  getUserInfo(){
+  getUserInfo() {
     return fetch(`${this._baseUrl}users/me`, {
       method: "GET",
       headers: this._headers,
-    }).then((response) => {
-      return response.json()
     })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  async getInitialCards() {
-    // Первый способ из вебинара
-    // return fetch(`${this._baseUrl}cards`, {
-    //   method: "GET",
-    //   headers: this._headers,
-    // }).then((response) => {
-    //   return response.json()
-    // })
-
-    //второй способ из вебинара
-    const response = await fetch(`${this._baseUrl}cards`, {
+  getInitialCards() {
+    return fetch(`${this._baseUrl}cards`, {
       method: "GET",
-       headers: this._headers,
-    });
-    const data = await response.json();
-
-    return data;
+      headers: this._headers,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  async updateUserAvatar(avatar) {
-    const response = await fetch(`${this._baseUrl}users/me/avatar`, {
+  updateUserAvatar(avatar) {
+    return fetch(`${this._baseUrl}users/me/avatar`, {
       headers: this._headers,
       method: "PATCH",
-      body: JSON.stringify(avatar)
-    });
-    const data = await response.json()
-
-    return data;
+      body: JSON.stringify(avatar),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-
-  updateUserInfo(userInfo){
+  updateUserInfo(userInfo) {
     return fetch(`${this._baseUrl}users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify(userInfo)
-    }).then((response) => {
-      return response.json()
+      body: JSON.stringify(userInfo),
     })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  createCard(cardInfo){
+  createCard(cardInfo) {
     return fetch(`${this._baseUrl}cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify(cardInfo)
-    }).then((response) => {
-      return response.json()
+      body: JSON.stringify(cardInfo),
     })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  deleteCard(cardId){
+  deleteCard(cardId) {
     return fetch(`${this._baseUrl}cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers
-    }).then((response) => {
-      return response.json()
+      headers: this._headers,
     })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  addLike(cardId){
+  addLike(cardId) {
     return fetch(`${this._baseUrl}cards/likes/${cardId}`, {
       method: "PUT",
-      headers: this._headers
-    }).then((response) => {
-      return response.json()
+      headers: this._headers,
     })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  deleteLike(cardId){
+  deleteLike(cardId) {
     return fetch(`${this._baseUrl}cards/likes/${cardId}`, {
       method: "DELETE",
-      headers: this._headers
-    }).then((response) => {
-      return response.json()
+      headers: this._headers,
     })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-
-
 }
-
-// Токен: 8449ac58-7a24-4246-806a-a59752bbc1d5
-// Идентификатор группы: cohort-60

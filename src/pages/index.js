@@ -17,7 +17,7 @@ import {
   profileAvatar,
   deleteCardPopup,
   updateAvatarPopupElement,
-  profileAvatarContainer
+  profileAvatarContainer,
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
@@ -30,14 +30,11 @@ const addCardForm = new PopupWithForm({
   submitForm: handleSubmitAddCardForm,
 });
 
-const deletePopup = new Popup(
-  deleteCardPopup,
-  handleSubmitDeleteCard
-)
+const deletePopup = new Popup(deleteCardPopup, handleSubmitDeleteCard);
 
 function handleSubmitDeleteCard(cardId) {
   const api = new Api();
-  api.deleteCard(cardId)
+  api.deleteCard(cardId);
 }
 
 function createCard(cardData) {
@@ -48,11 +45,10 @@ function createCard(cardData) {
 }
 
 function handleSubmitAddCardForm({ cardName, cardLink }) {
-  api.createCard({name: cardName, link: cardLink})
-  .then((data) => {
+  api.createCard({ name: cardName, link: cardLink }).then((data) => {
     const cardListSection = new Section(
       {
-        items: [],
+        items: [data],
         renderer: (item) => {
           cardListSection.addItem(createCard(item));
         },
@@ -60,13 +56,7 @@ function handleSubmitAddCardForm({ cardName, cardLink }) {
       cardContainer
     );
 
-    cardListSection.addItem(
-      createCard({
-        name: data.name,
-        link: data.link,
-        likes: data.likes
-      })
-    );
+    cardListSection.addItem(createCard(data));
   });
 
   addCardForm.close();
@@ -78,21 +68,21 @@ function handleSubmitAddCardForm({ cardName, cardLink }) {
 
 const updateAvatarPopup = new PopupWithForm({
   popupSelector: updateAvatarPopupElement,
-  submitForm: handleUpdateAvatar
-})
+  submitForm: handleUpdateAvatar,
+});
 
-function handleUpdateAvatar (data) {
-  const api = new Api()
+function handleUpdateAvatar(data) {
+  const api = new Api();
   api.updateUserAvatar(data).then((data) => {
-    profileAvatar.src = data.avatar
-  })
+    profileAvatar.src = data.avatar;
+  });
   updateAvatarPopup.close();
 }
 
 updateAvatarPopup.setEventListeners();
-profileAvatarContainer.addEventListener('click', () => {
+profileAvatarContainer.addEventListener("click", () => {
   updateAvatarPopup.open();
-})
+});
 
 //навешиваем слушатель события открытия редактора карточки
 buttonOpenPopupAddCard.addEventListener("click", () => {
