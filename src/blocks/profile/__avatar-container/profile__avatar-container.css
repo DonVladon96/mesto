@@ -25,7 +25,8 @@
   background-image: url(../../../images/Vector69.png);
   background-repeat: no-repeat;
   background-position: center;
-  text-align: right; white-space: nowrap;
+  text-align: right;
+  white-space: nowrap;
   animation: ani 0.3s linear forwards;
 }
 
