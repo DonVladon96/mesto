@@ -1,17 +1,12 @@
 .elements {
-  max-width: 880px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 282px);
-  row-gap: 20px;
-  column-gap: 17px;
-  border-radius: 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 282px);
+    row-gap: 20px;
+    column-gap: 17px;
+    justify-content: center;
 }
 
 @media screen and (max-width: 618px) {
@@ -20,3 +15,6 @@
   justify-content: center;
 }
 }
+
+
+

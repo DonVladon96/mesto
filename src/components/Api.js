@@ -25,6 +25,12 @@ export default class Api {
     }).then((response) => {
       return response.json()
     })
+
+    // const response = await fetch(`${this._baseUrl}cards`, {
+    //   method: "GET",
+    // });
+    // const data = await response.json();
+    // console.log(data)
   }
 
   updateUserInfo(userInfo){
