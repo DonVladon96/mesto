@@ -23,15 +23,21 @@ export const popupImageOpen = document.querySelector('.popup_image-open');
 export const popupImage = popupImageOpen.querySelector('.popup__image');
 export const popupCaption = popupImageOpen.querySelector('.popup__caption');
 export const profileAvatar = document.querySelector('.profile__avatar');
-export const deleteCardPopup = document.querySelector('#popup_delelte-card');
+export const PopupDeleteCard  = document.querySelector('.popup_delelte-card');
 export const updateAvatarPopupElement = document.querySelector('.popup_edit_avatar');
 export const profileAvatarContainer = document.querySelector('.profile__avatar-container');
+export const avatarInput = document.querySelector(".popup__input_avatar");
+export const buttonSubmitCard = document.querySelector("#submit-button-card");
+export const buttonSubmitAvatar = document.querySelector("#submit-button-avatar");
+export const buttonSubmitProfile = document.querySelector("#submit-button-profile");
+export const buttonSubmitDelete = document.querySelector("#delete-submit-button");
+
 
 
 // ПИШЕМ КАК В ВЕБИНАРЕ.
 export const buttonOpenPopupAddCard = document.querySelector(".profile__add-button");
 export const popupCards = document.querySelector(".popup-cards");
-export const titleInput = popupCards.querySelector("#card-name");
+export const titleInput = popupCards.querySelector("#card-name-discription");
 export const linkInput = popupCards.querySelector("#card-link");
 
 

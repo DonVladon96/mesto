@@ -1,9 +1,6 @@
-import Api from "./Api";
-
 class Card {
-  constructor(cardData, selector, handleCardClick, deletePopup, userId, handles) {
+  constructor(cardData, selector, handleCardClick,  userId, handles) {
     this._userId = userId;
-    this._deletePopup = deletePopup;
     this._cardId = cardData._id;
     this._likes = cardData.likes;
     this._ownerId = cardData.owner._id;
@@ -20,6 +17,7 @@ class Card {
     this._cardTitle = this._container.querySelector(".element__title");
     this._cardImage = this._container.querySelector(".element__photo");
     this._buttonTrash = this._container.querySelector(".element__button-trash");
+    this._handleDeleteCard = handles.deleteCardFunction;
   }
 
   _setCardImage() {
@@ -45,6 +43,10 @@ class Card {
     }
   }
 
+  deleteCard() {
+    this._container.remove();
+  }
+
 
   //создаю приватный метод для установки всех обработчиков (rew 1)
   _setEventListeners() {
@@ -53,15 +55,12 @@ class Card {
     });
 
     this._buttonTrash.addEventListener("click", () => {
-      this._deletePopup.open();
-      // this._deletePopup.setEventListeners();
-      // this._deletePopup.setDeleteEvent(this._cardId, this._container);
+      this._handleDeleteCard(this._cardId);
+
     });
 
     this._likeButton.addEventListener("click", () => {
       this._handleLikeClick()
-
-
     });
   }
 
@@ -99,7 +98,7 @@ class Card {
     this._setEventListeners();
     this._setCardLikes();
     this._deleteButtonIsVisible();
-    
+
     if (this._isLiked()) {
       this._likeButton.classList.add("element__button-like_active");
     } else {
