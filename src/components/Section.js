@@ -1,18 +1,17 @@
 export class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._cards = items;
+  constructor({ renderer }, containerSelector) {
+
     this._renderer = renderer;
     this._container = containerSelector;
   }
 
-  renderItems() {
-    
-    this._cards.forEach(item => {
+  renderItems(items) {
+    items.forEach(item => {
       this._renderer(item)
     });
   }
 
   addItem(element) {
-    this._container.prepend(element);
+    this._container.append(element);
   }
 }
