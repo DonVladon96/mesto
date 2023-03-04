@@ -172,7 +172,7 @@ const popupAddCardForm = new PopupWithForm({
         link: inputs.cardLink,
       })
       .then((res) => {
-        cardListSection.addItem(
+        cardListSection.addItemPrepend(
           createCard(res, "#card-item-template", handleCardClick, userId)
         );
         popupAddCardForm.close();
