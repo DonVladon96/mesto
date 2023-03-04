@@ -67,13 +67,14 @@ function createCard(cardData) {
           .deleteCard(cardId)
           .then(() => {
             card.deleteCard();
+            deletePopup.close();
           })
           .catch((err) => {
             console.log(`Ошибка: ${err}`);
           })
           .finally(() => {
             isWaiting(false, buttonSubmitDelete);
-            deletePopup.close();
+
           });
       });
     },
@@ -117,13 +118,14 @@ const updateAvatarPopup = new PopupWithForm({
       .updateUserAvatar(avatar)
       .then((data) => {
         userInfo.setProfileAvatar(data.avatar);
+        updateAvatarPopup.close();
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       })
       .finally(() => {
         isWaiting(false, buttonSubmitAvatar);
-        updateAvatarPopup.close();
+
       });
   },
 });
@@ -173,13 +175,14 @@ const popupAddCardForm = new PopupWithForm({
         cardListSection.addItem(
           createCard(res, "#card-item-template", handleCardClick, userId)
         );
+        popupAddCardForm.close();
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       })
       .finally(() => {
         isWaiting(false, buttonSubmitCard);
-        popupAddCardForm.close();
+
       });
   },
 });
@@ -224,13 +227,14 @@ const openEditProfile = new PopupWithForm({
           dataName: data.name,
           dataJob: data.about,
         });
+        openEditProfile.close();
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       })
       .finally(() => {
         isWaiting(false, buttonSubmitProfile);
-        openEditProfile.close();
+
       });
   },
 });
