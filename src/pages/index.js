@@ -24,6 +24,7 @@ import {
   buttonSubmitAvatar,
   buttonSubmitProfile,
   buttonSubmitDelete,
+  jobInput,nameInput
 } from "../utils/constants.js";
 import { Card } from "../components/Card";
 import FormValidator from "../components/FormValidator.js";
@@ -196,9 +197,17 @@ buttonOpenPopupAddCard.addEventListener("click", handlePopupAddCardForm);
 //   // Слушатель на открытие попапа редактирования профиля
 buttonOpenPopupEditProfile.addEventListener("click", () => {
   openEditProfile.open();
+  handleOpenProfileForm()
 });
 
 //Экземпляр редактирования профиля
+// сделать функцию для заполнения данных в инпуты
+function handleOpenProfileForm() {
+  const user = userInfo.getUserInfo();
+  nameInput.value = user.dataName;
+  jobInput.value = user.dataJob;
+  openEditProfile.open();
+}
 
 const openEditProfile = new PopupWithForm({
   popupSelector: popupEditProfile,
